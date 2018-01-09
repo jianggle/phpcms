@@ -50,7 +50,7 @@ class update {
 	}
 
 	function notice() {
-		return $this->url('notice');
+		//return $this->url('notice');
 	}
 
 	function module($type = '') {
