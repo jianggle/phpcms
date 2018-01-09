@@ -57,7 +57,7 @@
 	{
 		if($j%5==0) echo "<tr >";
 	?>
-	<label><input type="checkbox" name="selectmod[]" value="<?php echo $module?>" checked><?php echo $PHPCMS_MODULES['modulename'][$i]?>模块</label>
+	<label><input type="checkbox" name="selectmod[]" value="<?php echo $module?>"><?php echo $PHPCMS_MODULES['modulename'][$i]?>模块</label>
 	<?php
 		if($j%5==4) echo "</tr>";
 	$j++;
