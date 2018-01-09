@@ -18,7 +18,7 @@ $(function(){if ($.browser.msie && parseInt($.browser.version) < 7) $('#browserV
 	<?php echo L('main_last_loginip')?><?php echo $loginip?> <br />
 	</div>
 </div>
-<div class="col-2 col-auto">
+<!--<div class="col-2 col-auto">
 	<h6><?php echo L('main_safety_tips')?></h6>
 	<div class="content" style="color:#ff0000;">
 <?php if($pc_writeable) {?>	
@@ -77,7 +77,7 @@ function addtext(data) {
 </script>
 	</div>
 <?php }?>
-</div>
+</div>-->
 <div class="col-2 col-auto">
 	<h6><?php echo L('main_sysinfo')?></h6>
 	<div class="content">
@@ -88,7 +88,7 @@ function addtext(data) {
 	<?php echo L('main_upload_limit')?><?php echo $sysinfo['fileupload']?><br />	
 	</div>
 </div>
-<div class="bk10"></div>
+<!--<div class="bk10"></div>
 <div class="col-2 lf mr10" style="width:48%">
 	<h6><?php echo L('main_product_team')?></h6>
 	<div class="content">
@@ -100,9 +100,9 @@ function addtext(data) {
 	<?php echo L('main_product_qq')?>7634000 <br />
 	<?php echo L('main_product_sales')?>1561683312
 	</div>
-</div>
+</div>-->
 
-<div class="col-2 col-auto">
+<!--<div class="col-2 col-auto">
 	<h6><?php echo L('main_license')?></h6>
 	<div class="content">
 	<?php echo L('main_version')?>Phpcms <?php echo PC_VERSION?>  Release <?php echo PC_RELEASE?> [<a href="http://buy.phpcms.cn" target="_blank"><?php echo L('main_support')?></a>]<br />
@@ -110,6 +110,6 @@ function addtext(data) {
 	<?php echo L('main_serial_number')?><span id="phpcms_sn"></span> <br />
 	</div>
 </div>
-    <div class="bk10"></div>
+    <div class="bk10"></div>-->
 </div>
 </body></html>

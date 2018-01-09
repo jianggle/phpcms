@@ -60,7 +60,7 @@ var pc_hash = '<?php echo $_SESSION['pc_hash']?>'
 <div class="header">
 	<div class="logo lf"><a href="<?php echo $currentsite['domain']?>" target="_blank"><span class="invisible"><?php echo L('phpcms_title')?></span></a></div>
     <div class="rt-col">
-    	<div class="tab_style white cut_line text-r"><a href="javascript:;" onclick="lock_screen()"><img src="<?php echo IMG_PATH.'icon/lockscreen.png'?>"> <?php echo L('lockscreen')?></a><span>|</span><a href="http://www.phpcms.cn" target="_blank">PHPCMS</a><span>|</span><a href="http://www.phpcms.cn/license/license.php" target="_blank"><?php echo L('authorization')?></a><span>|</span><a href="http://bbs.phpcms.cn" target="_blank"><?php echo L('igenus_for_postfix')?></a><span>|</span><a href="http://v9.help.phpcms.cn/" target="_blank"><?php echo L('help')?></a>
+    	<div class="tab_style white cut_line text-r"><a href="javascript:;" onclick="lock_screen()"><img src="<?php echo IMG_PATH.'icon/lockscreen.png'?>"> <?php echo L('lockscreen')?></a><span>|</span><!--<a href="http://www.phpcms.cn" target="_blank">PHPCMS</a><span>|</span><a href="http://www.phpcms.cn/license/license.php" target="_blank"><?php echo L('authorization')?></a><span>|</span>--><a href="http://bbs.phpcms.cn" target="_blank"><?php echo L('igenus_for_postfix')?></a><span>|</span><a href="http://v9.help.phpcms.cn/" target="_blank"><?php echo L('help')?></a>
     <ul id="Skin">
 		<li class="s1 styleswitch" rel="styles1"></li>
 		<li class="s2 styleswitch" rel="styles2"></li>
@@ -71,9 +71,10 @@ var pc_hash = '<?php echo $_SESSION['pc_hash']?>'
     </div>
     <div class="col-auto">
     	<div class="log white cut_line"><?php echo L('hello'),$admin_username?>  [<?php echo $rolename?>]<span>|</span><a href="?m=admin&c=index&a=public_logout">[<?php echo L('exit')?>]</a><span>|</span>
-    		<a href="<?php echo $currentsite['domain']?>" target="_blank" id="site_homepage"><?php echo L('site_homepage')?></a><span>|</span>
+    		<a href="<?php echo $currentsite['domain']?>" target="_blank" id="site_homepage"><?php echo L('site_homepage')?></a>
+            <!--<span>|</span>
     		<a href="?m=member" target="_blank"><?php echo L('member_center')?></a><span>|</span>
-    		<a href="?m=search" target="_blank" id="site_search"><?php echo L('search')?></a>
+    		<a href="?m=search" target="_blank" id="site_search"><?php echo L('search')?></a>-->
     	</div>
         <ul class="nav white" id="top_menu">
         <?php
