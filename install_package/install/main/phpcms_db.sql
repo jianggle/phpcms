@@ -851,21 +851,6 @@ CREATE TABLE `phpcms_position` (
 ) TYPE=MyISAM;
 
 
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `listorder`, `siteid`) VALUES(1, 0, 0, '首页焦点图推荐', 20, 1, 1);
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `listorder`, `siteid`) VALUES(2, 0, 0, '首页头条推荐', 20, 4, 1);
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `listorder`, `siteid`) VALUES(13, 82, 0, '栏目页焦点图', 20, 0, 1);
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `listorder`, `siteid`) VALUES(5, 69, 0, '推荐下载', 20, 0, 1);
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `listorder`, `siteid`) VALUES(8, 30, 54, '图片频道首页焦点图', 20, 0, 1);
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `listorder`, `siteid`) VALUES(9, 0, 0, '网站顶部推荐', 20, 0, 1);
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `listorder`, `siteid`) VALUES(10, 0, 0, '栏目首页推荐', 20, 0, 1);
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `listorder`, `siteid`) VALUES(12, 0, 0, '首页图片推荐', 20, 0, 1);
-INSERT INTO `phpcms_position` (`posid`, `modelid`, `catid`, `name`, `maxnum`, `extention`, `listorder`, `siteid`) VALUES
-(14, 0, 0, '视频首页焦点图', 20, '', 0, 1),
-(15, 0, 0, '视频首页头条推荐', 20, '', 0, 1),
-(16, 0, 0, '视频首页每日热点', 20, '', 0, 1),
-(17, 0, 0, '视频栏目精彩推荐', 20, '', 0, 1);
-
-
 -- ----------------------------
 -- Table structure for `phpcms_position_data`
 -- ----------------------------
@@ -5215,13 +5200,6 @@ INSERT INTO `phpcms_member_group` VALUES ('7', '邮件认证', '1', '0', '0', '0
 INSERT INTO `phpcms_member_menu` VALUES ('', 'member_init', '0', 'member', 'index', 'init', 't=0', '0', '1', '', '');
 INSERT INTO `phpcms_member_menu` VALUES ('', 'account_manage', '0', 'member', 'index', 'account_manage', 't=1', '0', '1', '', '');
 INSERT INTO `phpcms_member_menu` VALUES ('', 'favorite', '0', 'member', 'index', 'favorite', 't=2', '0', '1', '', '');
-
-INSERT INTO `phpcms_category` (`catid`, `siteid`, `module`, `type`, `modelid`, `parentid`, `arrparentid`, `child`, `arrchildid`, `catname`, `style`, `image`, `description`, `parentdir`, `catdir`, `url`, `items`, `hits`, `setting`, `listorder`, `ismenu`, `sethtml`, `letter`, `usable_type`) VALUES(1, 1, 'content', 1, 0, 0, '0', 1, '1,2,3,5,162', '网站介绍', '', '', '', '', 'about', '/html/about/', 0, 0, 'array (\n  ''ishtml'' => ''1'',\n  ''template_list'' => ''default'',\n  ''page_template'' => ''page'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''category_ruleid'' => ''1'',\n  ''show_ruleid'' => '''',\n  ''repeatchargedays'' => ''1'',\n)', 1, 0, 0, 'wangzhanjieshao', '');
-
-INSERT INTO `phpcms_category` (`catid`, `siteid`, `module`, `type`, `modelid`, `parentid`, `arrparentid`, `child`, `arrchildid`, `catname`, `style`, `image`, `description`, `parentdir`, `catdir`, `url`, `items`, `hits`, `setting`, `listorder`, `ismenu`, `sethtml`, `letter`, `usable_type`) VALUES(2, 1, 'content', 1, 0, 1, '0,1', 0, '2', '关于我们', '', '', '', 'about/', 'aboutus', '/html/about/aboutus/', 0, 0, 'array (\n  ''ishtml'' => ''1'',\n  ''template_list'' => ''default'',\n  ''page_template'' => ''page'',\n  ''meta_title'' => ''关于我们'',\n  ''meta_keywords'' => ''关于我们'',\n  ''meta_description'' => ''关于我们'',\n  ''category_ruleid'' => ''1'',\n  ''show_ruleid'' => '''',\n  ''repeatchargedays'' => ''1'',\n)', 1, 1, 0, 'guanyuwomen', '');
-INSERT INTO `phpcms_category` (`catid`, `siteid`, `module`, `type`, `modelid`, `parentid`, `arrparentid`, `child`, `arrchildid`, `catname`, `style`, `image`, `description`, `parentdir`, `catdir`, `url`, `items`, `hits`, `setting`, `listorder`, `ismenu`, `sethtml`, `letter`, `usable_type`) VALUES(3, 1, 'content', 1, 0, 1, '0,1', 0, '3', '联系方式', '', '', '', 'about/', 'contactus', '/html/about/contactus/', 0, 0, 'array (\n  ''ishtml'' => ''1'',\n  ''template_list'' => ''default'',\n  ''page_template'' => ''page'',\n  ''meta_title'' => ''联系方式'',\n  ''meta_keywords'' => ''联系方式'',\n  ''meta_description'' => ''联系方式'',\n  ''category_ruleid'' => ''1'',\n  ''show_ruleid'' => '''',\n  ''repeatchargedays'' => ''1'',\n)', 2, 1, 0, 'lianxifangshi', '');
-INSERT INTO `phpcms_category` (`catid`, `siteid`, `module`, `type`, `modelid`, `parentid`, `arrparentid`, `child`, `arrchildid`, `catname`, `style`, `image`, `description`, `parentdir`, `catdir`, `url`, `items`, `hits`, `setting`, `listorder`, `ismenu`, `sethtml`, `letter`, `usable_type`) VALUES(4, 1, 'content', 1, 0, 1, '0,1', 0, '4', '版权声明', '', '', '', 'about/', 'copyright', 'http://test.phpcms.cn/index.php?m=content&c=index&a=lists&catid=4', 0, 0, 'array (\n  ''ishtml'' => ''0'',\n  ''template_list'' => ''default'',\n  ''page_template'' => ''page'',\n  ''meta_title'' => ''版权声明'',\n  ''meta_keywords'' => ''版权声明'',\n  ''meta_description'' => ''版权声明'',\n  ''category_ruleid'' => ''6'',\n  ''show_ruleid'' => '''',\n  ''repeatchargedays'' => ''1'',\n)', 3, 1, 0, 'banquanshengming', '');
-INSERT INTO `phpcms_category` (`catid`, `siteid`, `module`, `type`, `modelid`, `parentid`, `arrparentid`, `child`, `arrchildid`, `catname`, `style`, `image`, `description`, `parentdir`, `catdir`, `url`, `items`, `hits`, `setting`, `listorder`, `ismenu`, `sethtml`, `letter`, `usable_type`) VALUES(5, 1, 'content', 1, 0, 1, '0,1', 0, '5', '招聘信息', '', '', '', 'about/', 'hr', '/html/about/hr/', 0, 0, 'array (\n  ''ishtml'' => ''1'',\n  ''template_list'' => ''default'',\n  ''page_template'' => ''page'',\n  ''meta_title'' => '''',\n  ''meta_keywords'' => '''',\n  ''meta_description'' => '''',\n  ''category_ruleid'' => ''1'',\n  ''show_ruleid'' => '''',\n  ''repeatchargedays'' => ''1'',\n)', 4, 1, 0, 'zhaopinxinxi', '');
 
 DROP TABLE IF EXISTS `phpcms_video_content`;
 CREATE TABLE IF NOT EXISTS `phpcms_video_content` (

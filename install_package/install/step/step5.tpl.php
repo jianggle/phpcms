@@ -86,19 +86,19 @@
     	<table width="100%" cellspacing="1" cellpadding="0">
 			  <tr>
 				<th width="20%" align="right">超级管理员帐号：</th>
-				<td><input name="username" type="text" id="username" value="phpcms" class="input-text" /></td>
+				<td><input name="username" type="text" id="username" value="" class="input-text" /></td>
 			  </tr>
 			  <tr>
 				<th align="right">管理员密码：</th>
-				<td><input name="password" type="password" id="password" value="phpcms" class="input-text" /></td>
+				<td><input name="password" type="password" id="password" value="" class="input-text" /></td>
 			  </tr>
 			  <tr>
 				<th align="right">确认密码：</th>
-				<td><input name="pwdconfirm" type="password" id="pwdconfirm" value="phpcms" class="input-text" /></td>
+				<td><input name="pwdconfirm" type="password" id="pwdconfirm" value="" class="input-text" /></td>
 			  </tr>
 			  <tr>
 				<th align="right">管理员E-mail：</th>
-				<td><input name="email" type="text" id="email" class="input-text" />
+				<td><input name="email" type="text" id="email" value="599580031@qq.com" class="input-text" />
 					<input type="hidden" name="selectmod" value="<?php echo $selectmod?>" />
 					<input type="hidden" name="testdata" value="<?php echo $testdata?>" />
 					<input type="hidden" id="install_phpsso" name="install_phpsso" value="<?php echo $install_phpsso?>" />

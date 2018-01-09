@@ -65,12 +65,12 @@
 ?>
     </div>
 </fieldset>
-<fieldset>
+<!--<fieldset>
 	<legend>可选数据</legend>
 	<div class="content">
     	<label style="width:auto"><input type="checkbox" name="testdata" value="1" checked>默认测试数据 （用于新手和调试用户）</label>
     </div>
-</fieldset>
+</fieldset>-->
 					</form>
 					</div>
                     </div>
