@@ -40,7 +40,7 @@
         <label><input type="checkbox" name="content" value="content" checked disabled>内容模块</label>
         <label><input type="checkbox" name="member" value="member" checked  disabled>会员模型</label>
        <label><input type="checkbox" name="pay" value="pay" checked  disabled>财务模块</label>
-       <label><input type="checkbox" name="special" value="special" checked  disabled>专题模块</label>
+       <label><input type="checkbox" name="special" value="special"  disabled>专题模块</label>
        <label><input type="checkbox" name="search" value="search" checked  disabled>全文搜索</label>
 	   <label><input type="checkbox" name="phpsso" value="phpsso" checked  disabled>PHPSSO</label>
 	   <!--<label><input type="checkbox" name="video" value="video" checked  disabled>视频模块</label>-->

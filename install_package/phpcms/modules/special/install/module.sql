@@ -1,0 +1,1 @@
+INSERT INTO `phpcms_module` VALUES ('special', '专题', '', '0', '1.0', '', '', '0', '0', '2010-09-06', '2010-09-06');

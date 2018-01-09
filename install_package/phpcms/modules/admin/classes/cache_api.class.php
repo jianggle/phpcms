@@ -461,12 +461,14 @@ class cache_api {
 	 * 更新专题缓存方法
 	 */
 	public function special() {
-		$specials = array();
-		$result = $this->db->select(array('disabled'=>0), '`id`, `siteid`, `title`, `url`, `thumb`, `banner`, `ishtml`', '', '`listorder` DESC, `id` DESC');
-		foreach($result as $r) {
-			$specials[$r['id']] = $r;
+		if (module_exists('special')) {
+			$specials = array();
+			$result = $this->db->select(array('disabled'=>0), '`id`, `siteid`, `title`, `url`, `thumb`, `banner`, `ishtml`', '', '`listorder` DESC, `id` DESC');
+			foreach($result as $r) {
+				$specials[$r['id']] = $r;
+			}
+			setcache('special', $specials, 'commons');
 		}
-		setcache('special', $specials, 'commons');
 		return true;
 	}
 	
