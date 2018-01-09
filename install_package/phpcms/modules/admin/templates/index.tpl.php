@@ -80,7 +80,7 @@ var pc_hash = '<?php echo $_SESSION['pc_hash']?>'
         <?php
         $array = admin::admin_menu(0);
         foreach($array as $_value) {
-        	if($_value['id']==10) {
+        	if($_value['id']==4) {
         		echo '<li id="_M'.$_value['id'].'" class="on top_menu"><a href="javascript:_M('.$_value['id'].',\'?m='.$_value['m'].'&c='.$_value['c'].'&a='.$_value['a'].'\')" hidefocus="true" style="outline:none;">'.L($_value['name']).'</a></li>';
         		
         	} else {
@@ -211,7 +211,7 @@ $(function(){
 	$(".tab_web span").mouseout(function(){hidden_site_list_1()});
 	$(".tab-web-panel").mouseover(function(){clearh();$('.tab_web a').addClass('on')}).mouseout(function(){hidden_site_list_1();$('.tab_web a').removeClass('on')});
 	//默认载入左侧菜单
-	$("#leftMain").load("?m=admin&c=index&a=public_menu_left&menuid=10");
+	$("#leftMain").load("?m=admin&c=index&a=public_menu_left&menuid=4");
 
 	//面板切换
 	$("#btnx").removeClass("btns2");
