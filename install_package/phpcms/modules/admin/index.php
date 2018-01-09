@@ -99,7 +99,7 @@ class index extends admin {
 			param::set_cookie('userid', $r['userid'],$cookie_time);
 			param::set_cookie('admin_email', $r['email'],$cookie_time);
 			param::set_cookie('sys_lang', $r['lang'],$cookie_time);
-			showmessage(L('login_success'),'?m=admin&c=index');
+			header("location:?m=admin&c=index");
 			//同步登陆vms,先检查是否启用了vms
 			$video_setting = getcache('video', 'video');
 			if ($video_setting['sn'] && $video_setting['skey']) {

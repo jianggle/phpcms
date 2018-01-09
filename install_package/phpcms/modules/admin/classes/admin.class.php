@@ -36,7 +36,7 @@ class admin {
 			return true;
 		} else {
 			$userid = param::get_cookie('userid');
-			if(!isset($_SESSION['userid']) || !isset($_SESSION['roleid']) || !$_SESSION['userid'] || !$_SESSION['roleid'] || $userid != $_SESSION['userid']) showmessage(L('admin_login'),'?m=admin&c=index&a=login');
+			if(!isset($_SESSION['userid']) || !isset($_SESSION['roleid']) || !$_SESSION['userid'] || !$_SESSION['roleid'] || $userid != $_SESSION['userid']) header("location:?m=admin&c=index&a=login");
 		}
 	}
 
