@@ -43,7 +43,7 @@
        <label><input type="checkbox" name="special" value="special" checked  disabled>专题模块</label>
        <label><input type="checkbox" name="search" value="search" checked  disabled>全文搜索</label>
 	   <label><input type="checkbox" name="phpsso" value="phpsso" checked  disabled>PHPSSO</label>
-	   <label><input type="checkbox" name="video" value="video" checked  disabled>视频模块</label>
+	   <!--<label><input type="checkbox" name="video" value="video" checked  disabled>视频模块</label>-->
     </div>
 </fieldset>
 		
