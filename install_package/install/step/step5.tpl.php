@@ -86,15 +86,15 @@
     	<table width="100%" cellspacing="1" cellpadding="0">
 			  <tr>
 				<th width="20%" align="right">超级管理员帐号：</th>
-				<td><input name="username" type="text" id="username" value="" class="input-text" /></td>
+				<td><input name="username" type="text" id="username" value="superadmin" class="input-text" /></td>
 			  </tr>
 			  <tr>
 				<th align="right">管理员密码：</th>
-				<td><input name="password" type="password" id="password" value="" class="input-text" /></td>
+				<td><input name="password" type="password" id="password" value="superadmin666" class="input-text" /></td>
 			  </tr>
 			  <tr>
 				<th align="right">确认密码：</th>
-				<td><input name="pwdconfirm" type="password" id="pwdconfirm" value="" class="input-text" /></td>
+				<td><input name="pwdconfirm" type="password" id="pwdconfirm" value="superadmin666" class="input-text" /></td>
 			  </tr>
 			  <tr>
 				<th align="right">管理员E-mail：</th>
