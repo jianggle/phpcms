@@ -58,6 +58,48 @@ include $this->admin_tpl('header');
 </fieldset>
 <div class="bk10"></div>
 <fieldset>
+<legend><?php echo L('my_message')?></legend>
+<table width="100%"  class="table_form">
+ <tr>
+   <th width="80"><?php echo L('my_tel')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="tel" id="tel" size="30" value="<?php echo $data['tel']?>" /></td>
+ </tr>
+ <tr>
+   <th><?php echo L('my_phone')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="phone" id="phone" size="30" value="<?php echo $data['phone']?>" /></td>
+ </tr>
+ <tr>
+   <th><?php echo L('my_fax')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="fax" id="fax" size="30" value="<?php echo $data['fax']?>" /></td>
+ </tr>
+ <tr>
+   <th><?php echo L('my_address')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="address" id="address" size="30" value="<?php echo $data['address']?>" /></td>
+ </tr>
+ <tr>
+   <th><?php echo L('my_weibo')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="weibo" id="weibo" size="30" value="<?php echo $data['weibo']?>" /></td>
+ </tr>
+ <tr>
+   <th><?php echo L('my_wechat')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="wechat" id="wechat" size="30" value="<?php echo $data['wechat']?>" /></td>
+ </tr>
+<tr>
+   <th><?php echo L('my_qq')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="qq" id="qq" size="30" value="<?php echo $data['qq']?>" /></td>
+ </tr>
+<tr>
+   <th><?php echo L('my_email')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="email" id="email" size="30" value="<?php echo $data['email']?>" /></td>
+ </tr>
+<tr>
+   <th><?php echo L('my_icp')?>：</th>
+   <td class="y-bg"><input type="text" class="input-text" name="icp" id="icp" size="30" value="<?php echo $data['icp']?>" /></td>
+ </tr>
+</table>
+</fieldset>
+<div class="bk10"></div>
+<fieldset>
 	<legend><?php echo L('release_point_configuration')?></legend>
 	<table width="100%"  class="table_form">
   <tr>

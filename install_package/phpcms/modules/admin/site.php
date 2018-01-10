@@ -30,6 +30,15 @@ class site extends admin {
 			$site_title = isset($_POST['site_title']) && trim($_POST['site_title']) ? trim($_POST['site_title']) : '';
 			$keywords = isset($_POST['keywords']) && trim($_POST['keywords']) ? trim($_POST['keywords']) : '';
 			$description = isset($_POST['description']) && trim($_POST['description']) ? trim($_POST['description']) : '';
+			$tel = isset($_POST['tel']) && trim($_POST['tel']) ? trim($_POST['tel']) : '';
+			$phone = isset($_POST['phone']) && trim($_POST['phone']) ? trim($_POST['phone']) : '';
+			$fax = isset($_POST['fax']) && trim($_POST['fax']) ? trim($_POST['fax']) : '';
+			$address = isset($_POST['address']) && trim($_POST['address']) ? trim($_POST['address']) : '';
+			$weibo = isset($_POST['weibo']) && trim($_POST['weibo']) ? trim($_POST['weibo']) : '';
+			$wechat = isset($_POST['wechat']) && trim($_POST['wechat']) ? trim($_POST['wechat']) : '';
+			$qq = isset($_POST['qq']) && trim($_POST['qq']) ? trim($_POST['qq']) : '';
+			$email = isset($_POST['email']) && trim($_POST['email']) ? trim($_POST['email']) : '';
+			$icp = isset($_POST['icp']) && trim($_POST['icp']) ? trim($_POST['icp']) : '';
 			$release_point = isset($_POST['release_point']) ? $_POST['release_point'] : '';
 			$template = isset($_POST['template']) && !empty($_POST['template']) ? $_POST['template'] : showmessage(L('please_select_a_style'));
 			$default_style = isset($_POST['default_style']) && !empty($_POST['default_style']) ? $_POST['default_style'] : showmessage(L('please_choose_the_default_style'));			   
@@ -68,7 +77,7 @@ class site extends admin {
 			}
 			$_POST['setting']['watermark_img'] = IMG_PATH.'water/'.$_POST['setting']['watermark_img'];
 			$setting = trim(array2string($_POST['setting']));
-			if ($this->db->insert(array('name'=>$name,'dirname'=>$dirname, 'domain'=>$domain, 'site_title'=>$site_title, 'keywords'=>$keywords, 'description'=>$description, 'release_point'=>$release_point, 'template'=>$template,'setting'=>$setting, 'default_style'=>$default_style))) {
+			if ($this->db->insert(array('name'=>$name,'dirname'=>$dirname, 'domain'=>$domain, 'site_title'=>$site_title, 'keywords'=>$keywords, 'description'=>$description, 'tel'=>$tel,'phone'=>$phone,'fax'=>$fax,'address'=>$address,'weibo'=>$weibo,'wechat'=>$wechat,'qq'=>$qq,'email'=>$email,'icp'=>$icp, 'release_point'=>$release_point, 'template'=>$template,'setting'=>$setting, 'default_style'=>$default_style))) {
 				$class_site = pc_base::load_app_class('sites');
 				$class_site->set_cache();
 				showmessage(L('operation_success'), '?m=admin&c=site&a=init', '', 'add');
@@ -110,6 +119,15 @@ class site extends admin {
 				$site_title = isset($_POST['site_title']) && trim($_POST['site_title']) ? trim($_POST['site_title']) : '';
 				$keywords = isset($_POST['keywords']) && trim($_POST['keywords']) ? trim($_POST['keywords']) : '';
 				$description = isset($_POST['description']) && trim($_POST['description']) ? trim($_POST['description']) : '';
+				$tel = isset($_POST['tel']) && trim($_POST['tel']) ? trim($_POST['tel']) : '';
+				$phone = isset($_POST['phone']) && trim($_POST['phone']) ? trim($_POST['phone']) : '';
+				$fax = isset($_POST['fax']) && trim($_POST['fax']) ? trim($_POST['fax']) : '';
+				$address = isset($_POST['address']) && trim($_POST['address']) ? trim($_POST['address']) : '';
+				$weibo = isset($_POST['weibo']) && trim($_POST['weibo']) ? trim($_POST['weibo']) : '';
+				$wechat = isset($_POST['wechat']) && trim($_POST['wechat']) ? trim($_POST['wechat']) : '';
+				$qq = isset($_POST['qq']) && trim($_POST['qq']) ? trim($_POST['qq']) : '';
+				$email = isset($_POST['email']) && trim($_POST['email']) ? trim($_POST['email']) : '';
+				$icp = isset($_POST['icp']) && trim($_POST['icp']) ? trim($_POST['icp']) : '';
 				$release_point = isset($_POST['release_point']) ? $_POST['release_point'] : '';
 				$template = isset($_POST['template']) && !empty($_POST['template']) ? $_POST['template'] : showmessage(L('please_select_a_style'));
 				$default_style = isset($_POST['default_style']) && !empty($_POST['default_style']) ? $_POST['default_style'] : showmessage(L('please_choose_the_default_style'));	
@@ -151,7 +169,7 @@ class site extends admin {
 				}
 				$_POST['setting']['watermark_img'] = 'statics/images/water/'.$_POST['setting']['watermark_img'];
 				$setting = trim(array2string($_POST['setting']));
-				$sql = array('name'=>$name,'dirname'=>$dirname, 'domain'=>$domain, 'site_title'=>$site_title, 'keywords'=>$keywords, 'description'=>$description, 'release_point'=>$release_point, 'template'=>$template, 'setting'=>$setting, 'default_style'=>$default_style);
+				$sql = array('name'=>$name,'dirname'=>$dirname, 'domain'=>$domain, 'site_title'=>$site_title, 'keywords'=>$keywords, 'description'=>$description, 'tel'=>$tel,'phone'=>$phone,'fax'=>$fax,'address'=>$address,'weibo'=>$weibo,'wechat'=>$wechat,'qq'=>$qq,'email'=>$email,'icp'=>$icp, 'release_point'=>$release_point, 'template'=>$template, 'setting'=>$setting, 'default_style'=>$default_style);
 				if ($siteid == 1) unset($sql['dirname']);
 				if ($this->db->update($sql, array('siteid'=>$siteid))) {
 					$class_site = pc_base::load_app_class('sites');
