@@ -218,92 +218,6 @@ CREATE TABLE `phpcms_category_priv` (
   KEY `siteid` (`siteid`)
 ) TYPE=MyISAM;
 
--- ----------------------------
--- Table structure for `phpcms_collection_content`
--- ----------------------------
-DROP TABLE IF EXISTS `phpcms_collection_content`;
-CREATE TABLE `phpcms_collection_content` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nodeid` int(10) unsigned NOT NULL DEFAULT '0',
-  `siteid` mediumint(5) unsigned NOT NULL DEFAULT '0',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `url` char(255) NOT NULL,
-  `title` char(100) NOT NULL,
-  `data` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `nodeid` (`nodeid`,`siteid`),
-  KEY `status` (`status`)
-) TYPE=MyISAM;
-
--- ----------------------------
--- Table structure for `phpcms_collection_history`
--- ----------------------------
-DROP TABLE IF EXISTS `phpcms_collection_history`;
-CREATE TABLE `phpcms_collection_history` (
-  `md5` char(32) NOT NULL,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`md5`,`siteid`)
-) TYPE=MyISAM;
-
--- ----------------------------
--- Table structure for `phpcms_collection_node`
--- ----------------------------
-DROP TABLE IF EXISTS `phpcms_collection_node`;
-CREATE TABLE `phpcms_collection_node` (
-  `nodeid` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `lastdate` int(10) unsigned NOT NULL DEFAULT '0',
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `sourcecharset` varchar(8) NOT NULL,
-  `sourcetype` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `urlpage` text NOT NULL,
-  `pagesize_start` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `pagesize_end` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `page_base` char(255) NOT NULL,
-  `par_num` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  `url_contain` char(100) NOT NULL,
-  `url_except` char(100) NOT NULL,
-  `url_start` char(100) NOT NULL DEFAULT '',
-  `url_end` char(100) NOT NULL DEFAULT '',
-  `title_rule` char(100) NOT NULL,
-  `title_html_rule` text NOT NULL,
-  `author_rule` char(100) NOT NULL,
-  `author_html_rule` text NOT NULL,
-  `comeform_rule` char(100) NOT NULL,
-  `comeform_html_rule` text NOT NULL,
-  `time_rule` char(100) NOT NULL,
-  `time_html_rule` text NOT NULL,
-  `content_rule` char(100) NOT NULL,
-  `content_html_rule` text NOT NULL,
-  `content_page_start` char(100) NOT NULL,
-  `content_page_end` char(100) NOT NULL,
-  `content_page_rule` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `content_page` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `content_nextpage` char(100) NOT NULL,
-  `down_attachment` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `watermark` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `coll_order` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `customize_config` text NOT NULL,
-  PRIMARY KEY (`nodeid`),
-  KEY `siteid` (`siteid`)
-) TYPE=MyISAM;
-
--- ----------------------------
--- Table structure for `phpcms_collection_program`
--- ----------------------------
-DROP TABLE IF EXISTS `phpcms_collection_program`;
-CREATE TABLE `phpcms_collection_program` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `siteid` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `nodeid` int(10) unsigned NOT NULL DEFAULT '0',
-  `modelid` mediumint(6) unsigned NOT NULL DEFAULT '0',
-  `catid` int(10) unsigned NOT NULL DEFAULT '0',
-  `config` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `siteid` (`siteid`),
-  KEY `nodeid` (`nodeid`)
-) TYPE=MyISAM;
-
 DROP TABLE IF EXISTS `phpcms_content_check`;
 CREATE TABLE `phpcms_content_check` (
   `checkid` char(15) NOT NULL,
@@ -1349,7 +1263,6 @@ INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `lis
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(904, 'external_data_sources', 902, 'dbsource', 'dbsource_admin', 'init', '', 0, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(906, 'update_urls', 873, 'content', 'create_html', 'update_urls', '', 1, '1');
 
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(960, 'node_add', 957, 'collection', 'node', 'add', '', 0, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(909, 'fulltext_search', 29, 'search', 'search_type', 'init', '', 0, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(910, 'manage_type', 909, 'search', 'search_type', 'init', '', 0, '0');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(911, 'search_setting', 909, 'search', 'search_admin', 'setting', '', 0, '1');
@@ -1382,17 +1295,9 @@ INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `lis
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(954, 'history_del', 945, 'block', 'block_admin', 'history_del', '', 0, '0');
 
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(978, 'urlrule_manage', 977, 'admin', 'urlrule', 'init', '', 0, '1');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(957, 'collection_node', 821, 'collection', 'node', 'manage', '', 0, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(979, 'safe_config', 30, 'admin', 'setting', 'init', '&tab=2', 11, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(959, 'basic_config', 30, 'admin', 'setting', 'init', '', 10, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(961, 'position_edit', 32, 'admin', 'position', 'edit', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(962, 'collection_node_edit', 957, 'collection', 'node', 'edit', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(963, 'collection_node_delete', 957, 'collection', 'node', 'del', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(990, 'col_url_list', 957, 'collection', 'node', 'col_url_list', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(965, 'collection_node_publish', 957, 'collection', 'node', 'publist', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(966, 'collection_node_import', 957, 'collection', 'node', 'node_import', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(967, 'collection_node_export', 957, 'collection', 'node', 'export', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(968, 'collection_node_collection_content', 957, 'collection', 'node', 'col_content', '', 0, '0');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(969, 'googlesitemap', 977, 'admin', 'googlesitemap', 'set', '', 11, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(970, 'admininfo', 10, 'admin', 'admin_manage', 'init', '', 0, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(971, 'editpwd', 970, 'admin', 'admin_manage', 'public_edit_pwd', '', 1, '1');
@@ -1407,13 +1312,7 @@ INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `lis
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(982, 'module_manage', 82, 'admin', 'module', 'init', '', 0, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(983, 'ipbanned', 977, 'admin', 'ipbanned', 'init', '', 0, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(984, 'add_ipbanned', 983, 'admin', 'ipbanned', 'add', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(993, 'collection_content_import', 957, 'collection', 'node', 'import', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(991, 'copy_node', 957, 'collection', 'node', 'copy', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(992, 'content_del', 957, 'collection', 'node', 'content_del', '', 0, '0');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(989, 'downsites', 977, 'admin', 'downservers', 'init', '', 0, '1');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(994, 'import_program_add', 957, 'collection', 'node', 'import_program_add', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(995, 'import_program_del', 957, 'collection', 'node', 'import_program_del', '', 0, '0');
-INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(996, 'import_content', 957, 'collection', 'node', 'import_content', '', 0, '0');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(997, 'log', 977, 'admin', 'log', 'init', '', 0, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(998, 'add_page', 43, 'admin', 'category', 'add', 's=1', 2, '1');
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(999, 'add_cat_link', 43, 'admin', 'category', 'add', 's=2', 2, '1');
@@ -1522,7 +1421,6 @@ INSERT INTO `phpcms_module` VALUES ('search', '全站搜索', '', '0', '1.0', ''
 INSERT INTO `phpcms_module` VALUES ('scan', '木马扫描', 'scan', '0', '1.0', '', '', '0', '0', '2010-09-01', '2010-09-06');
 INSERT INTO `phpcms_module` VALUES ('attachment', '附件', 'attachment', '1', '1.0', '', '', '0', '0', '2010-09-01', '2010-09-06');
 INSERT INTO `phpcms_module` VALUES ('block', '碎片', '', '1', '1.0', '', '', '0', '0', '2010-09-01', '2010-09-06');
-INSERT INTO `phpcms_module` VALUES ('collection', '采集模块', 'collection', '1', '1.0', '', '', '0', '0', '2010-09-01', '2010-09-06');
 INSERT INTO `phpcms_module` VALUES ('dbsource', '数据源', '', '1', '', '', '', '0', '0', '2010-09-01', '2010-09-06');
 INSERT INTO `phpcms_module` VALUES ('template', '模板风格', '', '1', '1.0', '', '', '0', '0', '2010-09-01', '2010-09-06');
 INSERT INTO `phpcms_module` VALUES ('release', '发布点', '', '1', '1.0', '', '', '0', '0', '2010-09-01', '2010-09-06');
