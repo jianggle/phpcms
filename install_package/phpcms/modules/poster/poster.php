@@ -218,11 +218,15 @@ class poster extends admin {
         	$where .= " AND `type`='".$_GET['click']."'";
         	
         	//如果设置了按地区或者按ip分类
-	        if ($_GET['group']) {
-	        	$group = " `".$_GET['group']."`";
-	        	$fields = "*, COUNT(".$_GET['group'].") AS num";
-	        	$order = " `num` DESC";
-	        } 
+            $group = trim($_GET['group']); 
+            if(!in_array($group,array('ip','area'))){
+                $group = 'ip';
+            }
+            if($group){ 
+                $group = " `".$group."`"; 
+                $fields = "*, COUNT(".$group.") AS num"; 
+                $order = " `num` DESC"; 
+            }
 	        $r = $sdb->get_one($where, 'COUNT(*) AS num', '', $group); //取得总数
         } else {
         	$r = $sdb->get_one($where, 'COUNT(*) AS num');
