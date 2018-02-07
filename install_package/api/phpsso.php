@@ -125,8 +125,7 @@
 	if ($action == 'synlogin') {
 		
 		if(!isset($arr['uid'])) exit('0');
-		$arr['uid'] = intval($arr['uid']);
-		$phpssouid = $arr['uid'];
+		$phpssouid = intval($arr['uid']);
 		$userinfo = $db->get_one(array('phpssouid'=>$phpssouid));
 				
 		if (!$userinfo) {
