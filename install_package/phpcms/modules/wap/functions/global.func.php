@@ -155,7 +155,8 @@ function wap_img($url,$ishow) {
 	$wap_setting = string2array($wap_site[$GLOBALS['siteid']]['setting']);
 	$show_big = bigimg_url($url);
 	if($ishow==1) $show_tips = '<br><a href="'.$show_big.'">浏览大图</a>';
-	return '<img src="'.thumb($url,$wap_setting['thumb_w'],$wap_setting['thumb_h']).'">'.$show_tips;
+	//return '<img src="'.thumb($url,$wap_setting['thumb_w'],$wap_setting['thumb_h']).'">'.$show_tips;
+	return '<img src="'.$url.'">';
 }
 
 function strip_selected_tags($text) {
