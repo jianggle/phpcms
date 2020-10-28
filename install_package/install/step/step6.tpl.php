@@ -22,7 +22,6 @@
     <div id="hiddenop"></div>
 	<form id="install" action="install.php?" method="post">
 	<input type="hidden" name="module" id="module" value="<?php echo $module?>" />
-	<input type="hidden" name="testdata" id="testdata" value="<?php echo $testdata?>" />
 	<input type="hidden" id="selectmod" name="selectmod" value="<?php echo $selectmod?>" />
 	<input type="hidden" name="step" value="7">
 	</form>
@@ -35,7 +34,6 @@ reloads();
 var n = 0;
 var setting =  new Array();
 setting['admin'] = '后台管理主模块安装成功......';
-setting['phpsso'] = 'PHPSSO单点登录系统安装成功......';
 setting['comment'] = '评论模块安装成功......';
 setting['announce'] = '公告模块安装成功......';
 setting['poster'] = '广告模块安装成功......';
@@ -82,12 +80,7 @@ function reloads() {
 					n++;
 					if(n < m_d.length) {
 						reloads();
-					} else {
-						var testdata = $('#testdata').val();
-						if(testdata == 1) {
-							$('#hiddenop').load('?step=testdata&sid='+Math.random()*5);
-							$('#installmessage').append("<font color='yellow'>测试数据安装完成</font><br>");
-						}						
+					} else {					
 						$('#hiddenop').load('?step=cache_all&sid='+Math.random()*5);						
 						$('#installmessage').append("<font color='yellow'>缓存更新成功</font><br>");
 						$('#installmessage').append("<font color='yellow'>安装完成</font>");

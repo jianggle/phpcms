@@ -2,5 +2,3 @@ index.html
 caches/*
 html/*
 uploadfile/*
-phpsso_server/caches/*
-phpsso_server/uploadfile/*

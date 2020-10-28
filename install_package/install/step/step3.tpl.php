@@ -1,11 +1,4 @@
 <?php include PHPCMS_PATH.'install/step/header.tpl.php';?>
-<script type="text/javascript">
-  $(document).ready(function() {
-	$.formValidator.initConfig({autotip:true,formid:"install",onerror:function(msg){}});
-  	$("input:radio[name='install_phpsso']").formValidator({relativeid:"install_phpsso_2",tipid:"aiguoTip",tipcss :{"left":"60px"},onshow:"请选择一个安装类型",onfocus:"请选择一个安装类型",oncorrect:"选择完成"}).inputValidator({min:1,max:1,onerror:"请选择一个安装类型"});
-	$("#sso_url").formValidator({onshow:"请输入phpsso地址，必须以'/'结束",onfocus:"请输入phpsso地址，必须以'/'结束",empty:false}).inputValidator({onerror:"地址必须以'/'结束"}).regexValidator({regexp:"http:\/\/(.+)\/$",onerror:"地址必须以'/'结束"});	
-  })
-</script>
 	<div class="body_box">
         <div class="main_box">
             <div class="hd">
@@ -18,21 +11,7 @@
                     <div class="ct_box nobrd i6v">
                     <div class="nr">
 					<form id="install" action="install.php?" method="post">
-					<input type="hidden" name="step" value="4">
-<fieldset>
-	<legend>PHPSSO配置</legend>
-	<div class="content">
-    	<input type="radio" name="install_phpsso" id="install_phpsso_1" value="1" onclick="set_sso_hidden()">&nbsp;&nbsp;全新安装PHPCMS V9 (含 PHPSSO)<br/>
-        <input type="radio" name="install_phpsso" id="install_phpsso_2" value="2" onclick="set_sso()">&nbsp;&nbsp;仅安装PHPCMS V9 (手工指定已经安装的PHPSSO)
-    </div>
-	<div id="sso_cfg" class="d_n">
-		<ul>
-			<li>Phpsso地  址:<input type="text" name="sso[sso_url]" id="sso_url" value="http://127.0.0.1/phpsso_server/" class="w260"></li>
-			<li>Phpsso用户名:<input type="text" name="sso[username]" value=""></li>
-			<li>Phpsso密  码:<input type="password" name="sso[password]" value=""></li>
-		</ul>
-	</div>
-</fieldset>					
+					<input type="hidden" name="step" value="4">				
 <fieldset>
 	<legend>必选模块</legend>
 	<div class="content">
@@ -42,8 +21,6 @@
        <label><input type="checkbox" name="pay" value="pay" checked  disabled>财务模块</label>
        <label><input type="checkbox" name="special" value="special"  disabled>专题模块</label>
        <label><input type="checkbox" name="search" value="search" checked  disabled>全文搜索</label>
-	   <label><input type="checkbox" name="phpsso" value="phpsso" checked  disabled>PHPSSO</label>
-	   <!--<label><input type="checkbox" name="video" value="video" checked  disabled>视频模块</label>-->
     </div>
 </fieldset>
 		
@@ -65,12 +42,6 @@
 ?>
     </div>
 </fieldset>
-<!--<fieldset>
-	<legend>可选数据</legend>
-	<div class="content">
-    	<label style="width:auto"><input type="checkbox" name="testdata" value="1" checked>默认测试数据 （用于新手和调试用户）</label>
-    </div>
-</fieldset>-->
 					</form>
 					</div>
                     </div>
@@ -82,11 +53,3 @@
     </div>
 </body>
 </html>
-<script type="text/javascript">
-	function set_sso() {
-		$("#sso_cfg").show();
-	}
-	function set_sso_hidden() {
-		$("#sso_cfg").hide();
-	}	
-</script>

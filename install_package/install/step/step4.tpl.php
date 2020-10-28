@@ -46,9 +46,6 @@
 			<form id="install" action="install.php?" method="post">
 			<input type="hidden" name="step" value="5">
 			<input type="hidden" id="selectmod" name="selectmod" value="<?php echo $selectmod?>" />
-			<input type="hidden" name="testdata" value="<?php echo $testdata?>" />
-			<input type="hidden" id="install_phpsso" name="install_phpsso" value="<?php echo $install_phpsso?>" />
-			
 			</form>
         </div>
     </div>

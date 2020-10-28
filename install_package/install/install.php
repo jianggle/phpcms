@@ -59,50 +59,12 @@ switch($step)
 	
 	case '4': //检测目录属性
 		$selectmod = $_POST['selectmod'];
-		$testdata = $_POST['testdata'];
 		$selectmod = isset($selectmod) ? ','.implode(',', $selectmod) : '';
-		$install_phpsso = (isset($_POST['install_phpsso']) && !empty($_POST['install_phpsso'])) ? intval($_POST['install_phpsso']) : showmessage('请选择sso安装类型');
-		$needmod = 'admin,phpsso';
+		$needmod = 'admin';
 		$reg_sso_status = '';
 		$reg_sso_succ = param::get_cookie('reg_sso_succ');
-		if($install_phpsso === 2 && empty($reg_sso_succ)) {
-			$sso_url = $_POST[sso]['sso_url'];
-			$sso_info['username'] = $_POST[sso]['username'];
-			$sso_info['password'] = $_POST[sso]['password'];
-			mt_srand();
-			$sso_info['authkey'] = $phpsso_auth_key = random(32, '1294567890abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ');
-			$sso_info['name'] = 'phpcms v9';
-			$sso_info['url'] = urlencode($siteurl);
-			$sso_info['apifilename'] = 'api.php?op=phpsso';
-			$sso_info['charset'] = strtolower(CHARSET);
-			$sso_info['type'] = 'phpcms_v9';
-			$data = http_build_query($sso_info);
-			$needmod = 'admin';
-			$remote_url = $sso_url.'api.php?op=install&'.$data;
-			$remote_var = $sso_url.'api.php';
-			if(remote_file_exists($remote_var)) {
-				$returnid = @file_get_contents($remote_url);
-			}
-			if($returnid == '-1') {
-				$reg_sso_status = 'PHPSSO缺少传递参数';
-			} elseif($returnid == '-2') {
-				$reg_sso_status = 'PHPSSO用户名不存在或者密码错误，请检查';
-			} elseif($returnid > 0){
-				$reg_sso = array('phpsso'=>'1',
-								'phpsso_appid'=>$returnid,
-								'phpsso_api_url'=>$sso_url,
-								'phpsso_auth_key'=>$sso_info['authkey'],
-						);
-				set_config($reg_sso,'system');
-				param::set_cookie('reg_sso_succ',$returnid);
-			} elseif($returnid == '-4') {
-				$reg_sso_status = '请删除phpsso_server/caches/phpsso_install.lock';
-			} else {
-				$reg_sso_status = 'PHPSSO 的 URL 地址可能填写错误，请检查!';
-			}
-		}
-		
-		$chmod_file = ($install_phpsso == 1) ? 'chmod.txt' : 'chmod_unsso.txt';
+
+		$chmod_file = 'chmod.txt';
 		$selectmod = $needmod.$selectmod;
 		$selectmods = explode(',',$selectmod);
 		$files = file(PHPCMS_PATH."install/".$chmod_file);		
@@ -150,16 +112,13 @@ switch($step)
 
 	case '5': //配置帐号 （MYSQL帐号、管理员帐号、）
 		$database = pc_base::load_config('database');
-		$testdata = $_POST['testdata'];
 		extract($database['default']);
 		$selectmod = $_POST['selectmod'];
-		$install_phpsso = $_POST['install_phpsso'];
 		include PHPCMS_PATH."install/step/step".$step.".tpl.php";
 		break;
 
 	case '6': //安装详细过程
 		extract($_POST);
-		$testdata = $_POST['testdata'];
 		include PHPCMS_PATH."install/step/step".$step.".tpl.php";
 		break;
 
@@ -245,83 +204,6 @@ switch($step)
 			} else {
 				echo '2';//数据库文件不存在
 			}							
-		} elseif ($module == 'phpsso') {
-			//安装phpsso
-			
-			$ssourl = $siteurl.'phpsso_server/';
-			mt_srand();
-			$cookie_pre = random(5, 'abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ').'_';
-			mt_srand();
-			$auth_key = random(20, '1294567890abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ');
-			mt_srand();
-			$phpsso_auth_key = random(32, '1294567890abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ');
-			$sso_tablepre = $tablepre.'sso_';
-			$sys_sso_config = array('phpsso'=>'1',
-						'phpsso_appid'=>'1',
-						'phpsso_api_url'=>substr($ssourl,0,-1),
-						'phpsso_auth_key'=>$phpsso_auth_key,
-						);			
-			$sso_config = array('cookie_pre'=>$cookie_pre,
-						'auth_key'=>$auth_key,
-						'web_path'=>$rootpath.'phpsso_server/',
-						'errorlog'=>'0',
-						'app_path'=>$ssourl,
-						'js_path'=>$ssourl.'statics/js/',
-						'css_path'=>$ssourl.'statics/css/',
-						'img_path'=>$ssourl.'statics/images/',			
-						);	
-			$sso_db_config = array('hostname'=>$dbhost,
-						'port'=>$dbport,
-						'username'=>$dbuser,
-						'password'=>$dbpw,
-						'database'=>$dbname,
-						'tablepre'=>$sso_tablepre,
-						'pconnect'=>$pconnect,
-						'charset'=>$dbcharset,
-						);
-			set_config($sys_sso_config,'system');	//更改cms中sso配置				
-			set_sso_config($sso_config,'system');   //写入sso中配置信息
-			set_sso_config($sso_db_config,'database'); //写入sso数据库配置信息
-			
-			$link = mysqli_connect($dbhost, $dbuser, $dbpw) or die ('Not connected : ' . mysqli_connect_error());
-			$version = mysqli_get_server_info($link);			
-			if($version > '4.1' && $dbcharset) {
-				mysqli_query($link, "SET NAMES '$dbcharset'");
-			}			
-			if($version > '5.0') {
-				mysqli_query($link, "SET sql_mode=''");
-			}												
-			mysqli_select_db($link,$dbname);			
-			$dbfile =  'phpsso_db.sql';	
-			if(file_exists(PHPCMS_PATH."install/main/".$dbfile)) {
-				$sql = file_get_contents(PHPCMS_PATH."install/main/".$dbfile);
-				_sql_execute($link,$sql,$sso_tablepre,'ps_');				
-			}
-			//创建sso管理员信息
-			$username = iconv('UTF-8','GBK',$username);
-			$password_arr = password($password);
-			$password = $password_arr['password'];
-			$encrypt = $password_arr['encrypt'];
-			
-			_sql_execute($link,"INSERT INTO ".$sso_tablepre."admin (`id`,`username`,`password`,`encrypt`,`issuper`,`lastlogin`,`ip`) VALUES ('1','$username','$password','$encrypt','1','','')");
-			//设置phpcms v9应用
-			_sql_execute($link,"INSERT INTO ".$sso_tablepre."applications (`appid`,`type`,`name`,`url`,`authkey`,`ip`,`apifilename`,`charset`,`synlogin`) VALUES ('1','phpcms_v9','phpcms v9','$siteurl','$phpsso_auth_key','','api.php?op=phpsso','".CHARSET."','1')", $sso_tablepre, 'ps_');				
-			
-			$applist = array('1'
-						=>array (
-							    'appid' => '1',
-							    'type' => 'phpcms_v9',
-							    'name' => 'phpcms v9',
-							    'url' =>$siteurl,
-							    'authkey' => $phpsso_auth_key,
-							    'ip' => '',
-							    'apifilename' => 'api.php?op=phpsso',
-							    'charset' => CHARSET,
-							    'synlogin' => '1',
-							  ),				
-			);
-			$applist = "<?php\nreturn ".var_export($applist, true).";\n?>";
-			file_put_contents(PHPCMS_PATH.'phpsso_server/caches/caches_admin/caches_data/applist.cache.php', $applist);
 		} else {
 			//安装可选模块
 			if(in_array($module,array('announce','comment','link','vote','message','mood','poster','formguide','wap','upgrade','tag','sms'))) {
@@ -331,27 +213,6 @@ switch($step)
 		}
 		echo $module;
 		break;
-		
-	//安装测试数据	
-	case 'testdata':
-		$default_db = pc_base::load_config('database','default');
-		$dbcharset = $default_db['charset'];
-		$tablepre = $default_db['tablepre'];
-		$link = mysqli_connect($default_db['dbhost'], $default_db['username'], $default_db['password'], null, $default_db['dbport']) or die ('Not connected : ' . mysqli_connect_error());
-		$version = mysqli_get_server_info($link);		
-		if($version > '4.1' && $dbcharset) {
-			mysqli_query($link, "SET NAMES '$dbcharset'");
-		}			
-		if($version > '5.0') {
-			mysqli_query($link, "SET sql_mode=''");
-		}			
-		mysqli_select_db($link, $default_db['database']);
-		if(file_exists(PHPCMS_PATH."install/main/testsql.sql"))
-		{
-			$sql = file_get_contents(PHPCMS_PATH."install/main/testsql.sql");
-			_sql_execute($link,$sql);
-		}
-		break;	
 		
 	//数据库测试
 	case 'dbtest':
@@ -506,22 +367,6 @@ function writable_check($path){
 function set_config($config,$cfgfile) {
 	if(!$config || !$cfgfile) return false;
 	$configfile = CACHE_PATH.'configs'.DIRECTORY_SEPARATOR.$cfgfile.'.php';
-	if(!is_writable($configfile)) showmessage('Please chmod '.$configfile.' to 0777 !');
-	$pattern = $replacement = array();
-	foreach($config as $k=>$v) {
-			$v = trim($v);
-			$configs[$k] = $v;
-			$pattern[$k] = "/'".$k."'\s*=>\s*([']?)[^']*([']?)(\s*),/is";
-        	$replacement[$k] = "'".$k."' => \${1}".$v."\${2}\${3},";							
-	}
-	$str = file_get_contents($configfile);
-	$str = preg_replace($pattern, $replacement, $str);
-	return file_put_contents($configfile, $str);		
-}
-
-function set_sso_config($config,$cfgfile) {
-	if(!$config || !$cfgfile) return false;
-	$configfile = PHPCMS_PATH.'phpsso_server'.DIRECTORY_SEPARATOR.'caches'.DIRECTORY_SEPARATOR.'configs'.DIRECTORY_SEPARATOR.$cfgfile.'.php';
 	if(!is_writable($configfile)) showmessage('Please chmod '.$configfile.' to 0777 !');
 	$pattern = $replacement = array();
 	foreach($config as $k=>$v) {
