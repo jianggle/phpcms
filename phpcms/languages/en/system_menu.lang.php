@@ -1,4 +1,5 @@
-<?php
+<?php
+
 /*Language Format:
 Add a new file(.lang.php) with your module name at /phpcms/languages/
 translation save at the array:$LANG
@@ -195,7 +196,6 @@ $LANG['badword_manage'] = 'Manage restricted words';
 $LANG['menu_manage'] = 'Manage menu';
 $LANG['basic_config'] = 'Basic settings';
 $LANG['safe_config'] = 'Security settings';
-$LANG['sso_config'] = 'PHPSSO settings';
 $LANG['email_config'] = 'Email settings';
 $LANG['urlrule_manage'] = 'URL rule settings';
 $LANG['ipbanned'] = 'IP Blocking';

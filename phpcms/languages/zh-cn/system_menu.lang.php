@@ -199,7 +199,6 @@ $LANG['badword_manage'] = '敏感词管理';
 $LANG['menu_manage'] = '菜单管理';
 $LANG['basic_config'] = '基本设置';
 $LANG['safe_config'] = '安全配置';
-$LANG['sso_config'] = 'PHPSSO配置';
 $LANG['email_config'] = '邮箱配置';
 $LANG['urlrule_manage'] = 'URL规则管理';
 $LANG['ipbanned'] = 'IP禁止';
