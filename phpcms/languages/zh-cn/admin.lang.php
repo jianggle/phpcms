@@ -51,25 +51,10 @@ $LANG['main_safety_tpledit'] = '※ 您的模版允许后台在线编辑，为�
 $LANG['main_shortcut'] = '快捷方式';
 $LANG['main_sysinfo'] = '系统信息';
 $LANG['main_version'] = 'PHPCMS程序版本：';
-$LANG['main_latest_version'] = '查看最新版本';
 $LANG['main_os'] = '操作系统：';
 $LANG['main_web_server'] = '服务器软件：';
 $LANG['main_sql_version'] = 'MySQL 版本：';
 $LANG['main_upload_limit'] = '上传文件：';
-$LANG['main_copyright'] = '版权所有：';
-$LANG['main_product_team'] = 'PHPCMS系统开发团队';
-$LANG['main_product_planning'] = '总 策 划：';
-$LANG['main_product_dev'] = '团队成员：';
-$LANG['main_product_ui'] = 'UI 设计：';
-$LANG['main_product_site'] = '官方网站：';
-$LANG['main_product_bbs'] = '官方论坛：';
-$LANG['main_product_qq'] = '官方QQ讨论群：';
-$LANG['main_product_sales'] = '销售咨询QQ：';
-$LANG['main_license'] = '授权信息';
-$LANG['main_support'] = '技术支持与服务';
-$LANG['main_license_type'] = '授权类型：';
-$LANG['main_serial_number'] = '序列号：';
-
 
 //menu.php
 $LANG['menu_parentid'] = '上级菜单';

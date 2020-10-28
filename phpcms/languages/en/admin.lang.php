@@ -51,25 +51,10 @@ $LANG['main_safety_log'] = '* Your error messages have exceeded the maximum numb
 $LANG['main_shortcut'] = 'Shortcut';
 $LANG['main_sysinfo'] = 'System Infomation';
 $LANG['main_version'] = 'PHPCMS Version: ';
-$LANG['main_latest_version'] = 'Get the latest version';
 $LANG['main_os'] = 'Operating System: ';
 $LANG['main_web_server'] = 'Web Server: ';
 $LANG['main_sql_version'] = 'MySQL version: ';
 $LANG['main_upload_limit'] = 'File upload: ';
-$LANG['main_copyright'] = 'Copyright: ';
-$LANG['main_product_team'] = 'PHPCMS developers team';
-$LANG['main_product_planning'] = 'Project Manager: ';
-$LANG['main_product_dev'] = 'Development Support Team: ';
-$LANG['main_product_ui'] = 'UI design: ';
-$LANG['main_product_site'] = 'Official site: ';
-$LANG['main_product_bbs'] = 'Official forum: ';
-$LANG['main_product_qq'] = 'Official QQ group：';
-$LANG['main_product_sales'] = 'Official sales QQ：';
-$LANG['main_license'] = 'License Info';
-$LANG['main_support'] = 'IT Support and Services';
-$LANG['main_license_type'] = 'License Type: ';
-$LANG['main_serial_number'] = 'Serial Number: ';
-
 
 //menu.php
 $LANG['menu_parentid'] = 'Previous Menu';
