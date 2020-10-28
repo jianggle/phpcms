@@ -43,10 +43,8 @@ setting['mood'] = '心情指数模块安装成功......';
 setting['message'] = '短消息模块安装成功......';
 setting['formguide'] = '表单向导模块安装成功......';
 setting['wap'] = '手机门户模块安装成功......';
-setting['upgrade'] = '自动升级模块安装成功......';
 setting['tag'] = '标签模块安装成功......';
 setting['sms'] = '短信模块安装成功......';
-setting['video'] = '视频模块安装成功......';
 
 var dbhost = '<?php echo $dbhost?>';
 var dbport = '<?php echo $dbport?>';
