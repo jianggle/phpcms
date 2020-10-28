@@ -23,6 +23,16 @@
     </tr>
 {/loop}
 <tr>
+	<td style="text-align:right;">验证码</td>
+	<td colspan="2">
+		<span title="点击更换验证码" style=" cursor:pointer;">
+			<input type="text" id="code" name="code" size="8" class="input-text">
+			{form::checkcode('code_img', '4', '14', 84, 24)}
+		</span>
+		请输入图片中的验证码
+	</td>
+</tr>
+<tr>
 <td></td>
 <td><div class="submit ib"><input type="submit"{if $no_allowed} disabled=""{/if} name="dosubmit" id="dosubmit" value=" 提交 "></div> {if $no_allowed}您还没有<a href="{APP_PATH}index.php?m=member&c=index&alogin&forward={urlencode(HTTP_REFERER)}" style="color:red">登录</a>或<a href="" style="color:red">注册</a>网站，请登录后提交表单{/if}</td>
 </tr>
