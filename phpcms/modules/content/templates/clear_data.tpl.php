@@ -26,10 +26,6 @@ include $this->admin_tpl('header','admin');?>
 	<td><?php foreach($model_arr as $m) {?><label><input type="checkbox" name="model[]" value="<?php echo $m['modelid'];?>" > <?php echo $m['name']?></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php }?></td>
 </tr>
 <tr>
-	<td align="center" width="100"><input name="tables[]" type="checkbox" value="video_store" class="input-text-c input-text"></td>
-	<td><?php echo L('video_library')?></td>
-</tr>
-<tr>
 	<td align="center" width="100"><input name="tables[]" type="checkbox" value="comment" class="input-text-c input-text"></td>
 	<td><?php echo L('comment')?>（<span style="color:#d55"><?php echo L('can_not_recovered')?></span>）</td>
 </tr>

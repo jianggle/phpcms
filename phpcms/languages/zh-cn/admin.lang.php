@@ -648,7 +648,6 @@ $LANG['cache_file_success'] = '缓存完成';
 $LANG['site_cache_success'] = '缓存完成..........</li><li style=\"color: red;\">全站缓存更新成功';
 $LANG['please_choose_the_default_style'] = '请选择默认风格';
 $LANG['cache_copyfrom'] = '来源';
-$LANG['video_category_tb'] = '同步视频模型栏目';
 
 $LANG['please_select_a_style_and_select_the_template'] = '请选择风格后，选择默认模板。';
 $LANG['default_style'] = '默认风格';

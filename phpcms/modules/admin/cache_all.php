@@ -39,7 +39,6 @@ class cache_all extends admin {
 				array('name' => L('cache_file'), 'function' => 'cache2database'),
 				array('name' => L('cache_copyfrom'), 'function' => 'copyfrom'),
 				array('name' => L('clear_files'), 'function' => 'del_file'),
-				array('name' => L('video_category_tb'), 'function' => 'video_category_tb'),
 			);
 			$this->cache_api = pc_base::load_app_class('cache_api', 'admin');
 			$m = $modules[$page];

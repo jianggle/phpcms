@@ -281,11 +281,7 @@ class content extends admin {
 			$this->content_check_db = pc_base::load_model('content_check_model');
 			$this->position_data_db = pc_base::load_model('position_data_model');
 			$this->search_db = pc_base::load_model('search_model');
-			//判断视频模块是否安装 
-			if (module_exists('video') && file_exists(PC_PATH.'model'.DIRECTORY_SEPARATOR.'video_content_model.class.php')) {
-				$video_content_db = pc_base::load_model('video_content_model');
-				$video_install = 1;
-			}
+
 			$this->comment = pc_base::load_app_class('comment', 'comment');
 			$search_model = getcache('search_model_'.$this->siteid,'search');
 			$typeid = $search_model[$modelid]['typeid'];
@@ -329,10 +325,6 @@ class content extends admin {
 				$this->position_data_db->delete(array('id'=>$id,'catid'=>$catid,'module'=>'content'));
 				//删除全站搜索中数据
 				$this->search_db->delete_search($typeid,$id);
-				//删除视频库与内容对应关系数据
-				if ($video_install ==1) {
-					$video_content_db->delete(array('contentid'=>$id, 'modelid'=>$modelid));
-				}
 				
 				//删除相关的评论,删除前应该判断是否还存在此模块
 				if(module_exists('comment')){
@@ -1013,7 +1005,7 @@ class content extends admin {
 		
 		if ($_POST['dosubmit']) {
 			set_time_limit(0);
-			$models = array('category', 'content', 'hits', 'search', 'position_data', 'video_content', 'video_store', 'comment');
+			$models = array('category', 'content', 'hits', 'search', 'position_data', 'comment');
 			$tables = $_POST['tables'];
 			if (is_array($tables)) {
 				foreach ($tables as $t) {
@@ -1063,16 +1055,6 @@ class content extends admin {
 										$this->create_sql_file($result, $position_db->db_tablepre.'position_data', $sql_file);
 									}
 									$position_db->delete('`modelid`='.$modelid.' AND `module`=\'content\'');
-									//清理视频库与内容对应关系表
-									if (module_exists('video')) {
-										$video_content_db = pc_base::load_model('video_content_model');
-										$result = $video_content_db->select('`modelid`=\''.$modelid.'\'');
-										if (is_array($result)) {
-											$sql_file = CACHE_PATH.'bakup'.DIRECTORY_SEPARATOR.'default'.DIRECTORY_SEPARATOR.'video_content-'.$modelid.'.sql';
-											$this->create_sql_file($result, $video_content_db->db_tablepre.'video_content', $sql_file);
-										}
-										$video_content_db->delete('`modelid`=\''.$modelid.'\'');
-									}
 									//清理评论表及附件表，附件的清理为不可逆操作。
 									//附件初始化
 									//$attachment = pc_base::load_model('attachment_model');

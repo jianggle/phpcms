@@ -572,16 +572,4 @@ class cache_api {
 		setcache('copyfrom', $infos, 'admin');
 		return true;
 	}
-	/**
-	 * 同步视频模型栏目
-	 */
-	public function video_category_tb() {
-		if (module_exists('video')) {
-			$setting = getcache('video', 'video');
-			pc_base::load_app_class('ku6api', 'video', 0);
-			$ku6api = new ku6api($setting['sn'], $setting['skey']);
-			$ku6api->get_categorys();
-		}
-		return true;
-	}
 }
