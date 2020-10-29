@@ -314,11 +314,6 @@ $LANG['view_video'] = '预览视频';
 $LANG['change_thumb'] = '更换缩略图';
 
 //视频模型
-$LANG['please_input_video_setting'] = '请先完成视频库设置！';
-$LANG['choose_videoes'] = '视频选择';
-$LANG['videoes_store'] = '视频库';
-$LANG['videoes_lists'] = '视频列表';
-$LANG['videoes_num'] = '考虑网络因素，请每次添加、修改时新加视频的数量不超过 <font color="red">5</font> 个</div>';
 $LANG['other_template_setting'] = '其他模板设置';
 $LANG['admin_content_list'] = '后台信息管理模板：';
 $LANG['member_content_add'] = '会员中心信息添加模板：';

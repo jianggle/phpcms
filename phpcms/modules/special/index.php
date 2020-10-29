@@ -153,12 +153,7 @@ class index {
 			pc_base::load_app_func('util', 'content');
 			$title_pages = content_pages($pagenumber,$page, $pageurls);
 		}
-		$_special = $this->db->get_one(array('id'=>$specialid), '`title`, `url`, `show_template`, `isvideo`');
-		if ($_special['isvideo']) {
-			$video_store = pc_base::load_model('video_store_model');
-			$v_r = $video_store->get_one(array('videoid'=>$videoid), 'vid');
-			$video['vid'] = $v_r['vid'];
-		}
+		$_special = $this->db->get_one(array('id'=>$specialid), '`title`, `url`, `show_template`');
 		pc_base::load_sys_class('format', '', 0);
 		$inputtime = format::date($inputtime,1);
 		$SEO = seo($siteid, '', $title);

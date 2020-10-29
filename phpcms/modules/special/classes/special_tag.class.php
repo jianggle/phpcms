@@ -31,25 +31,6 @@ class special_tag {
 	}
 	
 	/**
-	 * 视频专题列表 video_lists
-	 * @param array $data 标签配置传递过来的配置数组，根据配置生成sql
-	 */
-	public function video_lists($data) {
-		$siteid = $data['siteid'] ? intval($data['siteid']) : get_siteid();
-		$where .= "`siteid`='".$siteid."'";
-		if ($data['elite']) $where .= " AND `elite`='1'";
-		if ($data['thumb']) $where .= " AND `thumb`!=''"; 
-		if ($data['disable']) {
-			$where .= " AND `disabled`='".$data['disable']."'";
-		}else{
-			$where .= " AND `disabled`='0'";//默认显示，正常显示的专题。
-		}
-		$where .=" AND `isvideo`='1'";
-		$listorder = array('`id` ASC', '`id` DESC', '`listorder` ASC, `id` DESC', '`listorder` DESC, `id` DESC');
-		return $this->db->select($where, '*', $data['limit'], $listorder[$data['listorder']]);
-	}
-	
-	/**
 	 * 标签中计算分页的方法
 	 * @param array $data 标签配置数组，根据数组计算出分页
 	 */
@@ -74,13 +55,6 @@ class special_tag {
 			$hits_db = pc_base::load_model('hits_model');
 			$sql = "hitsid LIKE '$hitsid'";
 			$r = $hits_db->get_one($sql, 'COUNT(*) AS total');
-		}elseif($data['action'] == 'video_lists') {
-			$where = '1';
-			if ($data['siteid']) $where .= " AND `siteid`='".$data['siteid']."'";
-			if ($data['elite']) $where .= " AND `elite`='1'";
-			if ($data['thumb']) $where .= " AND `thumb`!=''"; 
-			$where .=" AND `isvideo`='1'";
-			$r = $this->db->get_one($where, 'COUNT(id) AS total');
 		}
 		return $r['total'];
 	}

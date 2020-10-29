@@ -100,12 +100,6 @@ class index extends admin {
 			param::set_cookie('admin_email', $r['email'],$cookie_time);
 			param::set_cookie('sys_lang', $r['lang'],$cookie_time);
 			header("location:?m=admin&c=index");
-			//同步登陆vms,先检查是否启用了vms
-			$video_setting = getcache('video', 'video');
-			if ($video_setting['sn'] && $video_setting['skey']) {
-				$vmsapi = pc_base::load_app_class('ku6api', 'video');
-				$vmsapi->member_login_vms();
-			}
 		} else {
 			pc_base::load_sys_class('form', '', 0);
 			include $this->admin_tpl('login');

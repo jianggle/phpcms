@@ -197,9 +197,4 @@ $LANG['week']								=	'本周';
 $LANG['month']								=	'本月';
 $LANG['please_upload_thumb']				=	'请先上传缩略图';
 $LANG['crop_thumb']							=	'裁切图片';
-
-//视频专辑
-$LANG['please_setting_video_info']			=	'请先在模块管理里面安装视频库！';
-$LANG['please_not_setting_info']			=	'您还未完成视频库配置，请先在扩展>>视频库管理中完成该配置';
-$LANG['album_add_success']					=	'专辑载入成功！';
 ?>

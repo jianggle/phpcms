@@ -18,7 +18,6 @@ $menu_db->insert(array('name'=>'special_content_delete', 'parentid'=>$o_mid, 'm'
 $menu_db->insert(array('name'=>'special_content_listorder', 'parentid'=>$o_mid, 'm'=>'special', 'c'=>'content', 'a'=>'listorder', 'data'=>'', 'listorder'=>0, 'display'=>'0'));
 $menu_db->insert(array('name'=>'special_content_import', 'parentid'=>$o_mid, 'm'=>'special', 'c'=>'special', 'a'=>'import', 'data'=>'', 'listorder'=>0, 'display'=>'0'));
 
-$menu_db->insert(array('name'=>'album_import', 'parentid'=>$parentid, 'm'=>'special', 'c'=>'album', 'a'=>'import', 'data'=>'', 'listorder'=>0, 'display'=>'1'));
 $menu_db->insert(array('name'=>'creat_html', 'parentid'=>$parentid, 'm'=>'special', 'c'=>'special', 'a'=>'html', 'data'=>'', 'listorder'=>0, 'display'=>'1'));
 $menu_db->insert(array('name'=>'create_special_list', 'parentid'=>$parentid, 'm'=>'special', 'c'=>'special', 'a'=>'create_special_list', 'data'=>'', 'listorder'=>0, 'display'=>'1'));
 
