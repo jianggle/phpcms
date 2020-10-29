@@ -46,18 +46,9 @@ class setting extends admin {
 		$setting = array2string($setting);
 		$this->db->update(array('setting'=>$setting), array('module'=>'admin')); //存入admin模块setting字段
 		
-		//如果开始盛大通行证接入，判断服务器是否支持curl
-		$snda_error = '';
-		if($_POST['setconfig']['snda_akey'] || $_POST['setconfig']['snda_skey']) {
-			if(function_exists('curl_init') == FALSE) {
-				$snda_error = L('snda_need_curl_init');
-				$_POST['setconfig']['snda_enable'] = 0;
-			}
-		}
-
 		set_config($_POST['setconfig']);	 //保存进config文件
 		$this->setcache();
-		showmessage(L('setting_succ').$snda_error, HTTP_REFERER);
+		showmessage(L('setting_succ'), HTTP_REFERER);
 	}
 	
 	/*

@@ -156,15 +156,6 @@ include $this->admin_tpl('header');?>
 <div id="div_setting_5" class="contentList pad-10 hidden">
 <table width="100%"  class="table_form">
 
-
-  <tr>
-    <th width="120"><?php echo L('setting_snda_enable')?></th>
-    <td class="y-bg">
-	 APP key <input type="text" class="input-text" name="setconfig[snda_akey]" id="snda_akey" size="20" value="<?php echo $snda_akey ?>"/>
-	 APP secret key <input type="text" class="input-text" name="setconfig[snda_skey]" id="snda_skey" size="40" value="<?php echo $snda_skey ?>"/> <a href="http://code.snda.com/index/oauth" target="_blank"><?php echo L('click_register')?></a>
-    </td>
-  </tr>
-
   <tr>
     <th><?php echo L('setting_connect_sina')?></th>
     <td class="y-bg">
@@ -173,13 +164,6 @@ include $this->admin_tpl('header');?>
 	</td>
   </tr>
 
-  <tr>
-    <th><?php echo L('setting_connect_qq')?></th>
-    <td class="y-bg">
-	App key <input type="text" class="input-text" name="setconfig[qq_akey]" id="qq_akey" size="20" value="<?php echo $qq_akey ?>"/>
-	App secret key <input type="text" class="input-text" name="setconfig[qq_skey]" id="qq_skey" size="40" value="<?php echo $qq_skey ?>"/> <a href="http://open.t.qq.com/" target="_blank"><?php echo L('click_register')?></a>
-	</td>
-  </tr> 
   <tr>
     <th><?php echo L('setting_connect_qqnew')?></th>
     <td class="y-bg">

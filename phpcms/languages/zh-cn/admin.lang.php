@@ -693,10 +693,6 @@ $LANG['connect_enable_notice'] = '如关闭，前台不显示所有connect登录
 $LANG['setting_connect'] = 'connect';
 $LANG['setting_connect_enable'] = '开启connect';
 $LANG['setting_connect_sina'] = '新浪微博';
-$LANG['setting_connect_qq'] = '腾讯微博';
-
-$LANG['setting_snda_enable'] = '盛大连接';
-$LANG['snda_need_curl_init'] = '，但盛大通行证需服务器支持curl扩展';
 $LANG['red'] = '红';
 $LANG['green'] = '绿';
 $LANG['blue'] = '蓝';

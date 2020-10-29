@@ -766,28 +766,21 @@ class index extends foreground {
   	
 	public function logout() {
 		$setting = pc_base::load_config('system');
-		//snda退出
-		if($setting['snda_enable'] && param::get_cookie('_from')=='snda') {
-			param::set_cookie('_from', '');
-			$forward = isset($_GET['forward']) && trim($_GET['forward']) ? urlencode($_GET['forward']) : '';
-			$logouturl = 'https://cas.sdo.com/cas/logout?url='.urlencode(APP_PATH.'index.php?m=member&c=index&a=logout&forward='.$forward);
-			header('Location: '.$logouturl);
-		} else {
-			$synlogoutstr = '';	//同步退出js代码
-			if(pc_base::load_config('system', 'phpsso')) {
-				$this->_init_phpsso();
-				$synlogoutstr = $this->client->ps_member_synlogout();			
-			}
-			
-			param::set_cookie('auth', '');
-			param::set_cookie('_userid', '');
-			param::set_cookie('_username', '');
-			param::set_cookie('_groupid', '');
-			param::set_cookie('_nickname', '');
-			param::set_cookie('cookietime', '');
-			$forward = isset($_GET['forward']) && trim($_GET['forward']) ? $_GET['forward'] : 'index.php?m=member&c=index&a=login';
-			showmessage(L('logout_success').$synlogoutstr, $forward);
-		}
+
+        $synlogoutstr = '';	//同步退出js代码
+        if(pc_base::load_config('system', 'phpsso')) {
+            $this->_init_phpsso();
+            $synlogoutstr = $this->client->ps_member_synlogout();			
+        }
+        
+        param::set_cookie('auth', '');
+        param::set_cookie('_userid', '');
+        param::set_cookie('_username', '');
+        param::set_cookie('_groupid', '');
+        param::set_cookie('_nickname', '');
+        param::set_cookie('cookietime', '');
+        $forward = isset($_GET['forward']) && trim($_GET['forward']) ? $_GET['forward'] : 'index.php?m=member&c=index&a=login';
+        showmessage(L('logout_success').$synlogoutstr, $forward);
 	}
 
 	/**

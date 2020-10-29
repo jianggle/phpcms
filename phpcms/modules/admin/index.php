@@ -133,12 +133,8 @@ class index extends admin {
 		$_SESSION['roleid'] = 0;
 		param::set_cookie('admin_username','');
 		param::set_cookie('userid',0);
-		
-		//退出phpsso
-		$phpsso_api_url = pc_base::load_config('system', 'phpsso_api_url');
-		$phpsso_logout = '<script type="text/javascript" src="'.$phpsso_api_url.'/api.php?op=logout" reload="1"></script>';
-		
-		showmessage(L('logout_success').$phpsso_logout,'?m=admin&c=index&a=login');
+
+		showmessage(L('logout_success'),'?m=admin&c=index&a=login');
 	}
 	
 	//左侧菜单
@@ -284,29 +280,6 @@ class index extends admin {
 		 include $this->admin_tpl('map');
 	}
 	
-	/**
-	 * 
-	 * 读取盛大接扣获取appid和secretkey
-	 */
-	public function public_snda_status() {
-		//引入盛大接口
-		if(!strstr(pc_base::load_config('snda','snda_status'), '|')) {
-			$this->site_db = pc_base::load_model('site_model');
-			$uuid_arr = $this->site_db->get_one(array('siteid'=>1), 'uuid');
-			$uuid = $uuid_arr['uuid'];
-			$snda_check_url = "http://open.sdo.com/phpcms?cmsid=".$uuid."&sitedomain=".$_SERVER['SERVER_NAME'];
-
-			$snda_res_json = @file_get_contents($snda_check_url);
-			$snda_res = json_decode($snda_res_json, 1);
-
-			if(!isset($snda_res[err]) && !empty($snda_res['appid'])) {
-				$appid = $snda_res['appid'];
-				$secretkey = $snda_res['secretkey'];
-				set_config(array('snda_status'=>$appid.'|'.$secretkey), 'snda');
-			}
-		}
-	}
-
 	/**
 	 * @设置网站模式 设置了模式后，后台仅出现在此模式中的菜单
 	 */

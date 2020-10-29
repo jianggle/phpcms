@@ -344,11 +344,7 @@ $LANG['with_star_must_input'] = '带*号的字段为必填资料';
 $LANG['security_setting'] = '安全设置';
 $LANG['click_login'] = '单击登录';
 $LANG['sina_login'] = '用新浪账号登录';
-$LANG['snda_login'] = '用盛大连接登录';
-$LANG['qq_login'] = '用腾讯微博帐号登录';
 $LANG['sina_login_notice'] = '使用新浪微博连接登录PHPCMS,将精彩内容分享到新浪微博。';
-$LANG['qq_login_notice'] = '使用腾讯微博连接登录PHPCMS,将精彩内容分享到腾讯微博。';
-$LANG['snda_login_notice'] = '使用用盛大连接登录PHPCMS,轻松使用盛大所有服务。';
 
 $LANG['favorite_list'] = '收藏列表';
 $LANG['adddate'] = '添加时间';

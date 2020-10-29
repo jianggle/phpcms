@@ -113,16 +113,9 @@ $(function(){
                 	<h5><strong>{L('use_passport')}</strong></h5>
                     <div class="pass-logo">
                     	<ul class="item login-list clear blue">
-                        {if $setting['snda_akey'] || $setting['snda_skey']}
-                        	<li style="margin-right:14px;"><a href="javascript:;" onclick="show_login('snda');return false;" style="background-image:url({IMG_PATH}member/logo/snda_16_16.png)">盛大通行证</a></li>
-                        {/if}
                         {if $setting['sina_akey'] || $setting['sina_skey']}
                             <li><a href="javascript:;" onclick="show_login('sina');return false;" style="background-image:url({IMG_PATH}member/logo/sina_16_16.png)">新浪微博登录</a></li>
                         {/if}
-
-						{if $setting['qq_akey'] || $setting['qq_skey']}
-                        	<li style="margin-right:14px;"><a href="javascript:;" onclick="show_login('qq');return false;" style="background-image:url({IMG_PATH}member/logo/qq_16_16.png)">腾讯微博登录</a></li>
-						{/if}
 						{if $setting['qq_appkey'] || $setting['qq_appid']}
                         	<li style="margin-right:14px;"><a href="{APP_PATH}index.php?m=member&c=index&a=public_qq_loginnew" target="_blank" style="background-image:url({IMG_PATH}member/logo/qq_16_16.png)">腾讯QQ登录</a></li>
 						{/if}
@@ -168,12 +161,6 @@ $(function(){
 	function show_login(site) {
 		if(site == 'sina') {
 			art.dialog({lock:false,title:'{L('sina_login')}',id:'protocoliframe', iframe:'index.php?m=member&c=index&a=public_sina_login',width:'500',height:'310',yesText:'{L('close')}'}, function(){
-			});
-		} else if(site == 'snda') {
-			art.dialog({lock:false,title:'{L('snda_login')}',id:'protocoliframe', iframe:'index.php?m=member&c=index&a=public_snda_login',width:'500',height:'310',yesText:'{L('close')}'}, function(){
-			});
-		} else if(site == 'qq') {
-			art.dialog({lock:false,title:'{L('qq_login')}',id:'protocoliframe', iframe:'index.php?m=member&c=index&a=public_qq_login',width:'500',height:'310',yesText:'{L('close')}'}, function(){
 			});
 		}
 	}
