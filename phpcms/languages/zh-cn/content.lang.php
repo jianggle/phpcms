@@ -290,7 +290,6 @@ $LANG['check_status'] = '<font color="#0000FF">当前审核状态 ＞</font>';
 $LANG['cancel_the_picture'] = '取消图片';
 $LANG['model_table_not_exists'] = '模型被禁用或者是模型内容表不存在';
 
-
 //前台部分
 $LANG['info_does_not_exists'] = '您要查看的信息不存在或者还未通过审批！';
 $LANG['first_page'] = '第一页';
@@ -306,20 +305,14 @@ $LANG['not_writable'] = '不可写';
 $LANG['no_priv'] = '您没有访问该信息的权限！';
 $LANG['guest_not_allowsearch'] = '游客不允许搜索，请先登录';
 
-
 $LANG['cut_the_picture'] = '裁切图片';
 $LANG['moreinfo'] = '调用副表';
 $LANG['contribute_add_point'] = '投稿奖励';
-$LANG['view_video'] = '预览视频';
 $LANG['change_thumb'] = '更换缩略图';
 
-//视频模型
 $LANG['other_template_setting'] = '其他模板设置';
 $LANG['admin_content_list'] = '后台信息管理模板：';
 $LANG['member_content_add'] = '会员中心信息添加模板：';
-$LANG['clear_data_message'] = '一、初始化数据已经清理完毕，请执行“更新栏目缓存”及“更新缓存”操作！<br />二、初始化数据已经备份到caches/bakup/default/下面';
-$LANG['please_choose_talbes'] = '请选择需要清理的数据';
 $LANG['models'] = '模型';
-$LANG['can_not_recovered'] = '清理后，不可恢复';
 $LANG['clear'] = '清理';
 ?>

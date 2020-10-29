@@ -425,7 +425,5 @@ $LANG['module_config'] = '模块配置';
 $LANG['comment_manage'] = '评论管理';
 $LANG['sys_setting'] = '设置';
 $LANG['module'] = '模块'; 
-$LANG['a_clean_data'] = '一键清理数据'; 
 $LANG['video'] = '视频';
-$LANG['clear_data'] = '一键清理';
 ?>

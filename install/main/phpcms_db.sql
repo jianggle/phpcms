@@ -1405,7 +1405,7 @@ INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `lis
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(1360, 'category_batch_edit', 43, 'admin', 'category', 'batch_edit', '', 6, '1');
 
 INSERT INTO `phpcms_menu` (`id`, `name`, `parentid`, `m`, `c`, `a`, `data`, `listorder`, `display`) VALUES(1500, 'listorder', 822, 'content', 'content', 'listorder', '', 0, '0');
-INSERT INTO `phpcms_menu` (`name` ,`parentid` ,`m` ,`c` ,`a` ,`data` ,`listorder` ,`display` ,`project1` ,`project2` ,`project3` ,`project4` ,`project5`) VALUES ('a_clean_data',  '873',  'content',  'content',  'clear_data',  '',  '0',  '1',  '0',  '0',  '0',  '0',  '0');
+
 -- ----------------------------
 -- Records of phpcms_module
 -- ----------------------------
