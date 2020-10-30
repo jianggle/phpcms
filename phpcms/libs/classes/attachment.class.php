@@ -164,8 +164,9 @@ class attachment {
 		unset($matches, $string);
 		$remotefileurls = array_unique($remotefileurls);
 		$oldpath = $newpath = array();
+		$upload_url2 = preg_replace('/^(http(s?):\/\/)/i','',$upload_url);
 		foreach($remotefileurls as $k=>$file) {
-			if(strpos($file, '://') === false || strpos($file, $upload_url) !== false) continue;
+			if(strpos($file, '://') === false || strpos($file, $upload_url2) !== false) continue;
 			$filename = fileext($file);
 			if(!preg_match("/($ext)/is",$filename) || in_array($filename, array('php','phtml','php3','php4','jsp','dll','asp','cer','asa','shtml','shtm','aspx','asax','cgi','fcgi','pl'))){
 				continue;
@@ -286,7 +287,7 @@ class attachment {
 	function fillurl($surl, $absurl, $basehref = '') {
 		if($basehref != '') {
 			$preurl = strtolower(substr($surl,0,6));
-			if($preurl=='http://' || $preurl=='ftp://' ||$preurl=='mms://' || $preurl=='rtsp://' || $preurl=='thunde' || $preurl=='emule://'|| $preurl=='ed2k://')
+			if($preurl=='http:/' || $preurl=='https:' || $preurl=='ftp://' ||$preurl=='mms://' || $preurl=='rtsp:/' || $preurl=='thunde' || $preurl=='emule:'|| $preurl=='ed2k:/')
 			return  $surl;
 			else
 			return $basehref.'/'.$surl;
@@ -334,7 +335,7 @@ class attachment {
 			$preurl = strtolower(substr($surl,0,6));
 			if(strlen($surl)<7)
 			$okurl = 'http://'.$BaseUrlPath.'/'.$surl;
-			elseif($preurl=="http:/"||$preurl=='ftp://' ||$preurl=='mms://' || $preurl=="rtsp://" || $preurl=='thunde' || $preurl=='emule:'|| $preurl=='ed2k:/')
+			elseif($preurl=="http:/"||$preurl=="https:"||$preurl=='ftp://' ||$preurl=='mms://' || $preurl=="rtsp://" || $preurl=='thunde' || $preurl=='emule:'|| $preurl=='ed2k:/')
 			$okurl = $surl;
 			else
 			$okurl = 'http://'.$BaseUrlPath.'/'.$surl;
@@ -343,7 +344,7 @@ class attachment {
 		if($preurl=='ftp://' || $preurl=='mms://' || $preurl=='rtsp://' || $preurl=='thunde' || $preurl=='emule:'|| $preurl=='ed2k:/') {
 			return $okurl;
 		} else {
-			$okurl = preg_replace('/^(http:\/\/)/i','',$okurl);
+			$okurl = preg_replace('/^(http(s?):\/\/)/i','',$okurl);
 			$okurl = preg_replace('/\/{1,}/i','/',$okurl);
 			return 'http://'.$okurl;
 		}
