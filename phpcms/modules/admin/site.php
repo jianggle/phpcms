@@ -51,7 +51,7 @@ class site extends admin {
 			if ($this->db->get_one(array('dirname'=>$dirname), 'siteid')) {
 				showmessage(L('site_dirname').L('exists'));
 			}
-			if (!empty($domain) && !preg_match('/http:\/\/(.+)\/$/i', $domain)) {
+			if (!empty($domain) && !preg_match('/http(s?):\/\/(.+)\/$/i', $domain)) {
 				showmessage(L('site_domain').L('site_domain_ex2'));
 			}
 			if (!empty($domain) && $this->db->get_one(array('domain'=>$domain), 'siteid')) {
@@ -143,7 +143,7 @@ class site extends admin {
 					}
 				} 
 				
-				if (!empty($domain) && !preg_match('/http:\/\/(.+)\/$/i', $domain)) {
+				if (!empty($domain) && !preg_match('/http(s?):\/\/(.+)\/$/i', $domain)) {
 					showmessage(L('site_domain').L('site_domain_ex2'));
 				}
 				if (!empty($domain) && $data['domain'] != $domain && $this->db->get_one(array('domain'=>$domain), 'siteid')) {

@@ -38,7 +38,7 @@ class index {
  			if($_POST['name']==""){
  				showmessage(L('sitename_noempty'),"?m=link&c=index&a=register&siteid=$siteid");
  			}
- 			if($_POST['url']=="" || !preg_match('/^http:\/\/(.*)/i', $_POST['url'])){
+ 			if($_POST['url']=="" || !preg_match('/^http(s?):\/\/(.*)/i', $_POST['url'])){
  				showmessage(L('siteurl_not_empty'),"?m=link&c=index&a=register&siteid=$siteid");
  			}
  			if(!in_array($_POST['linktype'],array('0','1'))){
@@ -48,7 +48,7 @@ class index {
  			$_POST['logo'] =new_html_special_chars($_POST['logo']);
 
 			$logo = safe_replace(strip_tags($_POST['logo']));
-			if(!preg_match('/^http:\/\/(.*)/i', $logo)){
+			if(!preg_match('/^http(s?):\/\/(.*)/i', $logo)){
 				$logo = '';
 			}
 			$name = safe_replace(strip_tags($_POST['name']));

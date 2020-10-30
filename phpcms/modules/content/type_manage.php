@@ -214,7 +214,7 @@ class type_manage extends admin {
 			$r['show_ruleid'] = $setting['show_ruleid'];
 			$r['workflowid'] = $setting['workflowid'];
 			$r['isdomain'] = '0';
-			if(strpos($r['url'], 'http://') === false) {
+			if(strpos($r['url'], 'http://') === false && strpos($r['url'], 'https://') === false) {
 				$r['url'] = siteurl($r['siteid']).$r['url'];
 			} elseif ($r['ishtml']) {
 				$r['isdomain'] = '1';

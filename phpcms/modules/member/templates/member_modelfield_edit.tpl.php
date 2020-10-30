@@ -95,7 +95,7 @@ $(function(){
 			<option value="/^[0-9a-z]+$/i"><?php echo L('alphabet')?>+<?php echo L('number')?></option>
 			<option value="/^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/">E-mail</option>
 			<option value="/^[0-9]{5,20}$/">QQ</option>
-			<option value="/^http:\/\//"><?php echo L('http')?></option>
+			<option value="/^http(s?):\/\//"><?php echo L('http')?></option>
 			<option value="/^(1)[0-9]{10}$/"><?php echo L('mp')?></option>
 			<option value="/^[0-9-]{6,13}$/"><?php echo L('tel')?></option>
 			<option value="/^[0-9]{6}$/"><?php echo L('postcode')?></option>

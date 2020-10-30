@@ -793,7 +793,7 @@ function pageurl($urlrule, $page, $array = array()) {
 		$replaceme[] = $v;
 	}
 	$url = str_replace($findme, $replaceme, $urlrule);
-	$url = str_replace(array('http://','//','~'), array('~','/','http://'), $url);
+    $url = str_replace(array('http://','https://','//','~'), array('~','~','/',SITE_PROTOCOL), $url);
 	return $url;
 }
 

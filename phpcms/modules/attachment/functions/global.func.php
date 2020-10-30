@@ -51,7 +51,7 @@
 		$file_size_limit = $site_setting['upload_maxsize'];
 		$sess_id = SYS_TIME;
 		$admin_url = pc_base::load_config('system','admin_url');
-		$upload_path = empty($admin_url) ? APP_PATH : 'http://'.$admin_url.'/';
+        $upload_path = empty($admin_url) ? APP_PATH : SITE_PROTOCOL.$admin_url.'/';
 		$swf_auth_key = md5(pc_base::load_config('system','auth_key').$sess_id);
 		$init =  'var swfu = \'\';
 		$(document).ready(function(){

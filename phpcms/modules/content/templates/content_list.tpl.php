@@ -94,7 +94,7 @@ include $this->admin_tpl('header','admin');?>
 		if($status==99) {
 			if($r['islink']) {
 				echo '<a href="'.$r['url'].'" target="_blank">';
-			} elseif(strpos($r['url'],'http://')!==false) {
+			} elseif(strpos($r['url'],'http://')!==false || strpos($r['url'],'https://')!==false) {
 				echo '<a href="'.$r['url'].'" target="_blank">';
 			} else {
 				echo '<a href="'.$release_siteurl.$r['url'].'" target="_blank">';
