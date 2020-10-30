@@ -30,7 +30,7 @@ class form {
 			}
 			$toolbar .= "'-','Templates'],
 		    ['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print'],
-		    ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],['ShowBlocks'],['Image','Capture','Flash','flashplayer','MyVideo'],['Maximize'],
+		    ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],['ShowBlocks'],['Image','Capture','Flash','flashplayer'],['Maximize'],
 		    '/',
 		    ['Bold','Italic','Underline','Strike','-'],
 		    ['Subscript','Superscript','-'],
