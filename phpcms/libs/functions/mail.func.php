@@ -23,7 +23,7 @@ function sendmail($toemail, $subject, $message, $from='',$cfg = array(), $sitena
 	if($sitename=='') {
 		$siteid = get_siteid();
 		$siteinfo = siteinfo($siteid);
-		$sitename = $siteinfo['site_title'];
+		$sitename = $siteinfo['name'];
 	}
 	
 	if($cfg && is_array($cfg)) {
