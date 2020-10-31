@@ -437,6 +437,7 @@ CREATE TABLE `phpcms_member` (
   `connectid` char(40) NOT NULL DEFAULT '',
   `from` char(10) NOT NULL DEFAULT '',
   `mobile` char(11) NOT NULL DEFAULT '',
+  `avatar` varchar(255) NOT NULL,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `username` (`username`),
   KEY `email` (`email`(20)),

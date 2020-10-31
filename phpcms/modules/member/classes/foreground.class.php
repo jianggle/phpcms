@@ -27,9 +27,8 @@ class foreground {
 		} else {
 			//判断是否存在auth cookie
 			if ($phpcms_auth) {
-				$auth_key = $auth_key = get_auth_key('login');
+				$auth_key = $auth_key = md5(pc_base::load_config('system', 'auth_key').$_SERVER['HTTP_USER_AGENT']);
 				list($userid, $password) = explode("\t", sys_auth($phpcms_auth, 'DECODE', $auth_key));
-				$userid = intval($userid);
 				//验证用户，获取用户信息
 				$this->memberinfo = $this->db->get_one(array('userid'=>$userid));
 				if($this->memberinfo['islock']) exit('<h1>Bad Request!</h1>');

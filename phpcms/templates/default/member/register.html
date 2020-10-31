@@ -274,7 +274,7 @@ function show_protocol() {
 		
 		
 		{if $sms_setting['sms_enable']=='1'}
-		<div class="input"><label>{L('checkcode')}：</label><input type="text" id="code" name="code" size="10" class="input-text">{form::checkcode('code_img', '5', '14', 120, 26)}</div>
+		<div class="input"><label>{L('checkcode')}：</label><input type="text" id="code" name="code" size="10" class="input-text">{form::checkcode('code_img', '4', '14', 120, 26)}</div>
 
 		<div class="input"><label> 手机号码：</label><div class="form"><div id="mobile_div"><input type="text" name="mobile" id="mobile" value="" size="15" class="input-text" title="此服务免费,验证码将以短信免费发送到您的手机"> 
 			<div class="submit"><button onclick="get_verify()" type="button" class="hqyz">获取短信验证码</button></div> <span id="mobileTip"></span>
@@ -346,7 +346,7 @@ function show_protocol() {
 		{/if}
 		
 		{if $member_setting['enablcodecheck']=='1' && $sms_setting['sms_enable']!='1'}
-		<div class="input"><label>{L('checkcode')}：</label><input type="text" id="code" name="code" size="10" class="input-text">{form::checkcode('code_img', '5', '14', 120, 26)}</div>
+		<div class="input"><label>{L('checkcode')}：</label><input type="text" id="code" name="code" size="10" class="input-text">{form::checkcode('code_img', '4', '14', 120, 26)}</div>
 		{/if}
 		
 		

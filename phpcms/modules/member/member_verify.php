@@ -14,7 +14,6 @@ class member_verify extends admin {
 	function __construct() {
 		parent::__construct();
 		$this->db = pc_base::load_model('member_verify_model');
-		$this->_init_phpsso();
 	}
 
 	/**
@@ -74,7 +73,7 @@ class member_verify extends admin {
 			$success_uids = $info = array();
 			
 			foreach($userarr as $v) {
-				$status = $this->client->ps_member_register($v['username'], $v['password'], $v['email'], $v['regip'], $v['encrypt']);
+				$status = 1;
 				if ($status > 0) {
 					$info['phpssouid'] = $status;
 					$info['password'] = password($v['password'], $v['encrypt']);
@@ -268,21 +267,7 @@ class member_verify extends admin {
 		}
 		return $groupid;
 	}
-	
-	/**
-	 * 初始化phpsso
-	 * about phpsso, include client and client configure
-	 * @return string phpsso_api_url phpsso地址
-	 */
-	private function _init_phpsso() {
-		pc_base::load_app_class('client', '', 0);
-		define('APPID', pc_base::load_config('system', 'phpsso_appid'));
-		$phpsso_api_url = pc_base::load_config('system', 'phpsso_api_url');
-		$phpsso_auth_key = pc_base::load_config('system', 'phpsso_auth_key');
-		$this->client = new client($phpsso_api_url, $phpsso_auth_key);
-		return $phpsso_api_url;
-	}
-	
+
 	/**
 	 * check uername status
 	 */
@@ -290,16 +275,20 @@ class member_verify extends admin {
 		$username = isset($_GET['username']) && trim($_GET['username']) ? trim($_GET['username']) : exit(0);
 		$username = iconv('utf-8', CHARSET, $username);
 		
-		$status = $this->client->ps_checkname($username);
-		if($status == -4) {	//deny_register
+		$username = safe_replace($username);
+		//首先判断会员审核表
+		$this->verify_db = pc_base::load_model('member_verify_model');
+		$this->member_db = pc_base::load_model('member_model');
+		if($this->verify_db->get_one(array('username'=>$username))) {
 			exit('0');
-		}
-		
-		$status = $this->client->ps_get_member_info($username, 2);
-		if (is_array($status)) {
-			exit('0');
-		} else {
-			exit('1');
+		}else{
+			$where = array('username'=>$username);
+			$res = $this->member_db->get_one($where);
+			if($res) {
+				exit('0');
+			} else {
+				exit('1');
+			}
 		}
 	}
 	
@@ -308,23 +297,15 @@ class member_verify extends admin {
 	 */
 	public function checkemail_ajax() {
 		$email = isset($_GET['email']) && trim($_GET['email']) ? trim($_GET['email']) : exit(0);
-		
-		$status = $this->client->ps_checkemail($email);
-		if($status == -5) {	//deny_register
-			exit('0');
-		}
-				
-		$status = $this->client->ps_get_member_info($email, 3);
-		if(isset($_GET['phpssouid']) && isset($status['uid'])) {
-			if ($status['uid'] == intval($_GET['phpssouid'])) {
+		$this->member_db = pc_base::load_model('member_model');
+		if(!empty($email)){
+			$where = array('email'=>$email);
+			$res = $this->member_db->get_one($where);
+			if($res) {
+				exit('0');
+			} else {
 				exit('1');
 			}
-		}
-
-		if (is_array($status)) {
-			exit('0');
-		} else {
-			exit('1');
 		}
 	}
 }

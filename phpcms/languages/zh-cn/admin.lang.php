@@ -164,7 +164,6 @@ $LANG['setting_maxloginfailedtimes'] = '后台最大登录失败次数';
 $LANG['setting_maxiplockedtime'] = 'IP锁定时间';
 $LANG['setting_minrefreshtime'] = '连续两次刷新最短间隔';
 $LANG['must_be_number'] = '必须为数字';
-$LANG['must_be_32_w'] = '为phpsso中该设置的密钥';
 $LANG['setting_category_ajax'] = '异步显示栏目层级';
 
 $LANG['setting_succ'] = '配置修改成功';

@@ -1,0 +1,41 @@
+{template 'member', 'header'}
+<div id="memberArea">
+	{template 'member', 'account_manage_left'}
+	<div class="col-auto">
+		<div class="col-1 ">
+			<h5 class="title">{L('modify').L('avatar')}</h5>
+			<div class="content">
+				<div class="col-auto">
+					<form action="?m=member&c=index&a=account_manage_avatar&userid=<?php echo $memberinfo[userid]; ?>" method="post" name="myform" id="myform">
+                    <table cellpadding="2" cellspacing="1" class="table_form" width="100%">                    
+                         <tr>
+                            <th width="100"></th>
+                            <td><img id="head" src="{if $memberinfo[avatar]}{$memberinfo[avatar]}{else}{IMG_PATH}member/nophoto.gif{/if}" width="120px" style=" padding:10px;"></td>
+                        </tr>
+                        <tr>
+                            <th width="100"><?php echo L('avatar')?>：</th>
+                            <td><?php echo form::images('data[avatar]', 'avatar', $memberinfo[avatar], 'member')?></td>
+                        </tr>
+                        <tr>
+                            <th width="100">&nbsp;</th>
+                            <td><input type="hidden" name="userid" value="<?php echo $memberinfo[userid]; ?>">
+                            <input type="submit" name="dosubmit" id="dosubmit" class="button"  value="提交修改"></td>
+                        </tr>
+                    
+                    </table>
+                    </form>
+                    <script>
+					    $(function(){
+						    $("#avatar").bind("input propertychange change",function(event){
+									$("#head").attr('src',$("#avatar").val());
+							});
+						});
+					</script>
+				</div>
+			</div>
+			<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+{template 'member', 'footer'}

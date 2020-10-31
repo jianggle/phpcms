@@ -163,8 +163,6 @@ $LANG['setting_maxloginfailedtimes'] = 'Backend - max number of failed login att
 $LANG['setting_maxiplockedtime'] = 'IP locked time';
 $LANG['setting_minrefreshtime'] = 'Shortest interval between data refreshes';
 $LANG['must_be_number'] = 'must be digits';
-$LANG['must_be_32_w'] = 'encryption key for PHPSSO';
-
 
 $LANG['setting_succ'] = 'Updated successfully';
 $LANG['test_email_succ'] = 'Test mail has already send to ';

@@ -39,7 +39,7 @@
 				<ul class="col-right col-avatar" id="avatarlist">
 				  {loop $avatar $k $v}
 					<li>
-						<img src="{$v}" height="{$k}" width="{$k}" onerror="this.src='{$phpsso_api_url}/statics/images/member/nophoto.gif'"><br />
+						<img src="{$v}" height="{$k}" width="{$k}" onerror="this.src='{APP_PATH}statics/images/member/nophoto.gif'"><br />
 						{L('avatar')}{$k} x {$k}
 					</li>
 				  {/loop}

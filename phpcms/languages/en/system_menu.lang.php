@@ -224,7 +224,6 @@ $LANG['md5_creat'] = 'Generate MD5 ';
 $LANG['announce'] = 'Announcement';
 $LANG['mood'] = 'Emoticons';
 $LANG['mood_setting'] = 'Emoticons settings';
-$LANG['phpsso'] = 'PHPSSO';
 $LANG['edit_content'] = 'Edit content';
 $LANG['push_to_special'] = 'Promote';
 $LANG['list_type'] = 'Manage category';

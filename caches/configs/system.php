@@ -42,24 +42,12 @@ return array(
 'admin_founders' => '1', //网站创始人ID，多个ID逗号分隔
 'execution_sql' => 0, //EXECUTION_SQL
 
-'phpsso' => '1',	//是否使用phpsso
-'phpsso_appid' => '1',	//应用id	
-'phpsso_api_url' => 'http://v9.phpcms.cn/phpsso_server',	//接口地址
-'phpsso_auth_key' => 'vGIDD0t8UGqkUGfHLQepqciq96vhwEQ0', //加密密钥
-'phpsso_version' => '1', //phpsso版本
-
 'html_root' => '/html',//生成静态文件路径
 'safe_card'=>'1',//是否启用口令卡
 
 'connect_enable' => '1',	//是否开启外部通行证
 'sina_akey' => '',	//sina AKEY
 'sina_skey' => '',	//sina SKEY
-
-'snda_akey' => '',	//盛大通行证 akey
-'snda_skey' => '',	//盛大通行证 skey
-
-'qq_akey' => '',	//qq skey
-'qq_skey' => '',	//qq skey
 
 'qq_appkey' => '',	//QQ号码登录 appkey
 'qq_appid' => '',	//QQ号码登录 appid

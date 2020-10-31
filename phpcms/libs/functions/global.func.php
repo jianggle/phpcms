@@ -972,27 +972,16 @@ function get_memberinfo_buyusername($username, $field='') {
  * @param $is_userid $uid是否为v9 userid，如果为真，执行sql查询此用户的phpssouid
  * @param $size 头像大小 有四种[30x30 45x45 90x90 180x180] 默认30
  */
-function get_memberavatar($uid, $is_userid='', $size='30') {
+function get_memberavatar($uid, $is_userid='1', $size='30') {
 	if($is_userid) {
 		$db = pc_base::load_model('member_model');
 		$memberinfo = $db->get_one(array('userid'=>$uid));
-		if(isset($memberinfo['phpssouid'])) {
-			$uid = $memberinfo['phpssouid'];
+		if(isset($memberinfo['userid'])) {
+			$uid = $memberinfo['userid'];
+			$avatar = $memberinfo['avatar'];
 		} else {
 			return false;
 		}
-	}
-
-	pc_base::load_app_class('client', 'member', 0);
-	define('APPID', pc_base::load_config('system', 'phpsso_appid'));
-	$phpsso_api_url = pc_base::load_config('system', 'phpsso_api_url');
-	$phpsso_auth_key = pc_base::load_config('system', 'phpsso_auth_key');
-	$client = new client($phpsso_api_url, $phpsso_auth_key);
-	$avatar = $client->ps_getavatar($uid);
-	if(isset($avatar[$size])) {
-		return $avatar[$size];
-	} else {
-		return false;
 	}
 }
 

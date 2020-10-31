@@ -229,7 +229,6 @@ $LANG['md5_creat'] = '生成md5';
 $LANG['announce'] = '公告';
 $LANG['mood'] = '新闻心情';
 $LANG['mood_setting'] = '心情配置';
-$LANG['phpsso'] = 'phpsso';
 $LANG['edit_content'] = '修改内容';
 $LANG['push_to_special'] = '推送';
 $LANG['list_type'] = '分类管理';

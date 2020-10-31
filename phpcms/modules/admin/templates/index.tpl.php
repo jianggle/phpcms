@@ -278,10 +278,6 @@ function _M(menuid,targetUrl) {
 		$("#leftMain").load("?m=admin&c=index&a=public_menu_left&menuid="+menuid, {limit: 25}, function(){
 		   windowW();
 		 });
-	} else {
-		$("#leftMain").load("?m=admin&c=phpsso&a=public_menu_left&menuid="+menuid, {limit: 25}, function(){
-		   windowW();
-		 });
 	}
 	//$("#rightMain").attr('src', targetUrl);
 	$('.top_menu').removeClass("on");
