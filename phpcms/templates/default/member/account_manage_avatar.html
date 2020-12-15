@@ -1,52 +1,69 @@
 {template 'member', 'header'}
+<link  href="{JS_PATH}cropperjs/cropper.min.css" rel="stylesheet">
+<style>
+.cropper{padding:20px;width:448px;height:392px;border:1px solid #ccc;background:#f7fafb}
+.cropper-cover{position:relative;width:100%;height:100%}
+.cropper-cover .btn{position:absolute;top:50%;left:50%;display:block;margin-top:-32px;margin-left:-113px;width:227px;height:64px;background:url(data:image/png;base64,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);cursor:pointer}
+.cropper-main .tips{overflow:hidden;height:28px;font-weight:700;font-size:14px;line-height:21px}
+.cropper-main .col-left{margin-right:20px;width:328px}
+.cropper-avatar{width:320px;height:320px}
+.cropper-avatar img{width:100%}
+.cropper-preview{margin-right:-1rem}
+.img-preview{overflow:hidden;margin-bottom:.5rem}
+.img-preview>img{max-width:100%}
+.preview-md{width:90px;height:90px}
+.preview-sm{width:45px;height:45px}
+.preview-xs{width:30px;height:30px}
+.cropper-btn{margin-top:10px;text-align:center}
+.avatar-file{position:absolute;overflow:hidden;clip:rect(0,0,0,0);padding:0;width:1px;height:1px;border:0;white-space:nowrap}
+</style>
 <div id="memberArea">
 	{template 'member', 'account_manage_left'}
 	<div class="col-auto">
 		<div class="col-1 ">
+			<div id="finalImg"></div>
 			<h5 class="title">{L('modify').L('avatar')}</h5>
 			<div class="content">
-				
-				<script language="javascript" type="text/javascript" src="{$phpsso_api_url}/statics/js/swfobject.js"></script>
-				<script type="text/javascript">
-					var flashvars = {
-						'upurl':"{$upurl}&callback=return_avatar&"
-					}; 
-					var params = {
-						'align':'middle',
-						'play':'true',
-						'loop':'false',
-						'scale':'showall',
-						'wmode':'window',
-						'devicefont':'true',
-						'id':'Main',
-						'bgcolor':'#ffffff',
-						'name':'Main',
-						'allowscriptaccess':'always'
-					}; 
-					var attributes = {
-						
-					}; 
-					swfobject.embedSWF("{$phpsso_api_url}/statics/images/main.swf", "myContent", "490", "434", "9.0.0","{$phpsso_api_url}/statics/images/expressInstall.swf", flashvars, params, attributes);
-
-					function return_avatar(data) {
-						if(data == 1) {
-							window.location.reload();
-						} else {
-							alert('failure');
-						}
-					}
-				</script> 
 				<ul class="col-right col-avatar" id="avatarlist">
 				  {loop $avatar $k $v}
 					<li>
-						<img src="{$v}" height="{$k}" width="{$k}" onerror="this.src='{APP_PATH}statics/images/member/nophoto.gif'"><br />
+						<img src="{$v}" height="{$k}" width="{$k}" onerror="this.src='{IMG_PATH}member/nophoto.gif'"><br />
 						{L('avatar')}{$k} x {$k}
 					</li>
 				  {/loop}
 				</ul>
 				<div class="col-auto">
-					<div id="myContent"> 
-					  <p>Alternative content</p> 
+					<div class="cropper">
+						<div class="cropper-cover">
+							<label class="label" data-toggle="tooltip" title="上传头像照片">
+								<a class="btn"></a>
+								<input type="file" class="avatar-file" name="file" accept="image/*">
+                            </label>
+						</div>
+						<div class="cropper-main" style="display: none">
+							<div class="tips">你可以拖动中间的方框以裁剪满意的头像</div>
+							<div class="main">
+								<div class="col-left">
+									<div class="cropper-avatar">
+										<img src="{IMG_PATH}nophoto.gif" alt="avatar" id="avatar">
+									</div>
+									<div class="cropper-btn">
+										<label class="label" data-toggle="tooltip" title="上传头像照片">
+											<a class="button">重新上传</a>
+											<input type="file" class="avatar-file" name="file" accept="image/*">
+										</label>
+										<input name="dosubmit" type="submit" id="dosubmit" value="保存头像" class="button">
+									</div>
+								</div>
+								<div class="col-auto">
+									<div class="cropper-preview clearfix">
+										<div class="img-preview preview-md"></div>
+										<div class="img-preview preview-sm"></div>
+										<div class="img-preview preview-xs"></div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -55,4 +72,54 @@
 	</div>
 </div>
 <div class="clear"></div>
+<script src="{JS_PATH}cropperjs/cropper.min.js"></script>
+<script src="{JS_PATH}cropperjs/jquery-cropper.min.js"></script>
+<script>
+	var $avatar = $('#avatar');
+	var $input = $('.avatar-file');
+	var $main = $('.cropper-main');
+	var $cover = $('.cropper-cover');
+	var uploadedImageURL;
+	$input.change(function () {
+		var files = this.files;
+		var file;
+		if (files && files.length) {
+			file = files[0];
+			if (/^image\/\w+$/.test(file.type)) {
+				if (uploadedImageURL) {
+					URL.revokeObjectURL(uploadedImageURL);
+				}
+				uploadedImageURL = URL.createObjectURL(file);
+				$avatar.cropper('destroy').attr('src', uploadedImageURL).cropper({
+					aspectRatio: 1,
+					viewMode: 3,
+					preview: '.img-preview'
+				});
+				$input.val('');
+				if($main.css('display') === 'none'){
+					$main.show();
+					$cover.hide();
+				}
+			} else {
+				window.alert('请选择一张图片');
+			}
+		}
+	});
+	$('#dosubmit').click(function(){
+		var canvas = $avatar.cropper('getCroppedCanvas', { maxWidth: 320, maxHeight: 320});
+		$.ajax({
+			url: '{$upurl}',
+			type: 'POST',
+			data: canvas.toDataURL('image/jpeg'),
+			dataType: "text",
+			success: function (data) {
+				if (data == 1) {
+					window.location.reload();
+				} else {
+					alert('上传失败');
+				}
+			}
+		});
+	});
+</script>
 {template 'member', 'footer'}

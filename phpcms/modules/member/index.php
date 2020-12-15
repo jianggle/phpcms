@@ -350,29 +350,40 @@ class index extends foreground {
 
 	public function account_manage_avatar() {
 		$memberinfo = $this->memberinfo;
-		if(isset($_POST['dosubmit'])) {
-		     $userid = $_POST['userid'];
-			 $userid = isset($_GET['userid']) ? trim($_GET['userid']) : showmessage(L('operation_failure'), 'index.php?m=member&c=index&a=account_manage_avatar');
-			 $r = $this->db->get_one(array("userid" => $userid));
-			 if($r){
-			      if ($_POST['data']['avatar']) {
-					  $_POST['data']['avatar'] = safe_replace($_POST['data']['avatar']);
-				  }
-				  $this->db->update($_POST['data'], array('userid'=>$userid));;
-				 //更新附件状态
-				  if(pc_base::load_config('system','attachment_stat') & $_POST['data']['avatar']) {
-					  $this->attachment_db = pc_base::load_model('attachment_model');
-					  $this->attachment_db->api_update($_POST['data']['avatar'],'member-'.$userid,1);
-				  }
-				  showmessage(L('operation_success'),'index.php?m=member&c=index&a=account_manage_avatar');
-			 
-			 }else{
-			     showmessage(L('operation_failure'),HTTP_REFERER);
-			 }
-		}else{
-		   
+		$avatardata = file_get_contents("php://input");
+		if($avatardata) {
+			if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $avatardata, $result)) {
+				$avatardata = base64_decode(str_replace($result[1], '', $avatardata));
+			}
+			$userid = $memberinfo['userid'];
+			$r = $this->db->get_one(array("userid" => $userid));
+			if($r){
+				//创建图片存储文件夹
+				$avatardir = pc_base::load_config('system', 'upload_path').'avatar/';
+				if (!file_exists($avatardir)) {
+					mkdir($avatardir, 0777, true);
+				}
+				$avatarname = 'user_'.$userid.'_avatar.jpg';
+
+				//保存图片
+				$fp = fopen($avatardir.$avatarname, 'w');
+				fwrite($fp, $avatardata);
+				fclose($fp);
+
+				// 更新图片路径
+				$fileurl = pc_base::load_config('system', 'upload_url').'avatar/'.$avatarname.'?t='.time();
+				$this->db->update(array('avatar' => $fileurl), array('userid' => $userid));
+
+				exit('1');
+			}else{
+				showmessage(L('operation_failure'),HTTP_REFERER);
+			}
 		}
-		include template('member', 'account_manage_avatarnew');
+
+		$avatarurl = $memberinfo['avatar'];
+		$avatar = array('180'=>$avatarurl, '90'=>$avatarurl, '45'=>$avatarurl, '30'=>$avatarurl);
+
+		include template('member', 'account_manage_avatar');
 	}
 
 	public function account_manage_security() {

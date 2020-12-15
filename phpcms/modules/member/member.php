@@ -340,7 +340,7 @@ class member extends admin {
 			if(!empty($_POST['delavatar'])) {
 				$del['avatar'] = "";
 				$this->db->update($del, array('userid'=>$userid));
-				unlink($userinfo['avatar']);
+				self::deleteavatar($userid);
 			}
 
 			$status = 1;
@@ -468,15 +468,14 @@ class member extends admin {
 			$status = 1;
 			if($status > 0) {
 				if ($this->db->delete($where)) {
-					
 					//删除用户模型用户资料
 					foreach($uidarr as $v) {
 						if(!empty($userinfo[$v])) {
 							$this->db->set_model($userinfo[$v]);
-							$this->db->delete(array('userid'=>$v));
+                            $this->db->delete(array('userid'=>$v));
+                            self::deleteavatar($v);
 						}
 					}
-				
 					showmessage(L('operation_success'), HTTP_REFERER);
 				} else {
 					showmessage(L('operation_failure'), HTTP_REFERER);
@@ -728,6 +727,16 @@ class member extends admin {
 			}
 		}
 	}
-	
+
+	/**
+	 * 删除头像
+	 * @param $userid
+	 */
+	private function deleteavatar($userid) {
+		$avatarurl = pc_base::load_config('system', 'upload_path').'avatar/user_'.$userid.'_avatar.jpg';
+		if(file_exists($avatarurl)) {
+			@unlink($avatarurl);
+		}
+	}
 }
 ?>
