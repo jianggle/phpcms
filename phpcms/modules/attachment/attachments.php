@@ -1,5 +1,5 @@
-<?php 
-defined('IN_PHPCMS') or exit('No permission resources.'); 
+<?php
+defined('IN_PHPCMS') or exit('No permission resources.');
 $session_storage = 'session_'.pc_base::load_config('system','session_storage');
 pc_base::load_sys_class($session_storage);
 if(param::get_cookie('sys_lang')) {
@@ -12,7 +12,7 @@ class attachments {
 	function __construct() {
 		pc_base::load_app_func('global');
 		$this->upload_url = pc_base::load_config('system','upload_url');
-		$this->upload_path = pc_base::load_config('system','upload_path');		
+		$this->upload_path = pc_base::load_config('system','upload_path');
 		$this->imgext = array('jpg','gif','png','bmp','jpeg');
 		$this->userid = $_SESSION['userid'] ? $_SESSION['userid'] : (param::get_cookie('_userid') ? param::get_cookie('_userid') : sys_auth($_POST['userid_flash'],'DECODE'));
 		$this->isadmin = $this->admin_username = $_SESSION['roleid'] ? 1 : 0;
@@ -22,7 +22,7 @@ class attachments {
 			showmessage(L('please_login','','member'));
 		}
 	}
-	
+
 	/**
 	 * 常规上传
 	 */
@@ -35,7 +35,7 @@ class attachments {
 		$catid = intval($_GET['catid']);
 		$siteid = $this->get_siteid();
 		$site_setting = get_site_setting($siteid);
-		$site_allowext = $site_setting['upload_allowext'];		
+		$site_allowext = $site_setting['upload_allowext'];
 		$attachment = new attachment($module,$catid,$siteid);
 		$attachment->set_userid($this->userid);
 		$a = $attachment->upload('upload',$site_allowext);
@@ -73,7 +73,7 @@ class attachments {
 					elseif ($fileext == 'flv' || $fileext == 'swf' || $fileext == 'rm' || $fileext == 'rmvb') $fileext = 'flv';
 					else $fileext = 'do';
 					echo $aids[0].','.$this->upload_url.$attachment->uploadedfiles[0]['filepath'].','.$fileext.','.$filename;
-				}			
+				}
 				exit;
 			} else {
 				echo '0,'.$attachment->error();
@@ -88,7 +88,7 @@ class attachments {
 			extract(getswfinit($_GET['args']));
 			$siteid = $this->get_siteid();
 			$site_setting = get_site_setting($siteid);
-			$file_size_limit = sizecount($site_setting['upload_maxsize']*1024);		
+			$file_size_limit = sizecount($site_setting['upload_maxsize']*1024);
 			$att_not_used = param::get_cookie('att_json');
 			if(empty($att_not_used) || !isset($att_not_used)) $tab_status = ' class="on"';
 			if(!empty($att_not_used)) $div_status = ' hidden';
@@ -98,7 +98,7 @@ class attachments {
 			include $this->admin_tpl('swfupload');
 		}
 	}
-	
+
 	public function crop_upload() {
 		if (isset($GLOBALS["HTTP_RAW_POST_DATA"])) {
 			$pic = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -127,7 +127,7 @@ class attachments {
 					$catid = intval($_GET['catid']);
 					$siteid = $this->get_siteid();
 					$attachment = new attachment($module, $catid, $siteid);
-					$uploadedfile['filename'] = basename($_GET['file']); 
+					$uploadedfile['filename'] = basename($_GET['file']);
 					$uploadedfile['fileext'] = strtolower(fileext($_GET['file']));
 					if (in_array($uploadedfile['fileext'], array('jpg', 'gif', 'jpeg', 'png', 'bmp'))) {
 						$uploadedfile['isimage'] = 1;
@@ -148,7 +148,7 @@ class attachments {
 			exit;
 		}
 	}
-	
+
 	/**
 	 * 删除附件
 	 */
@@ -159,7 +159,7 @@ class attachments {
 			if($att) $attachment->delete(array('aid'=>$att,'userid'=>$this->userid,'uploadip'=>ip()));
 		}
 	}
-	
+
 
 	/**
 	 * 加载图片库
@@ -177,7 +177,7 @@ class attachments {
 			if($uploadtime) {
 				$start_uploadtime = strtotime($uploadtime.' 00:00:00');
 				$stop_uploadtime = strtotime($uploadtime.' 23:59:59');
-				$where .= "AND `uploadtime` >= '$start_uploadtime' AND  `uploadtime` <= '$stop_uploadtime'";				
+				$where .= "AND `uploadtime` >= '$start_uploadtime' AND  `uploadtime` <= '$stop_uploadtime'";
 			}
 			if($where) $where = substr($where, 3);
 		}
@@ -197,7 +197,7 @@ class attachments {
 		$pages = $this->att_db->pages;
 		include $this->admin_tpl('album_list');
 	}
-	
+
 	/**
 	 * 目录浏览模式添加图片
 	 */
@@ -213,7 +213,7 @@ class attachments {
 		$show_header = true;
 		include $this->admin_tpl('album_dir');
 	}
-	
+
 	/**
 	 * 设置upload上传的json格式cookie
 	 */
@@ -229,10 +229,10 @@ class attachments {
 		} else {
 			$json_str = $att_arr_exist ? $att_arr_exist.'||'.$json_str : $json_str;
 			param::set_cookie('att_json',$json_str);
-			return true;			
+			return true;
 		}
 	}
-	
+
 	/**
 	 * 设置swfupload上传的json格式cookie
 	 */
@@ -248,13 +248,13 @@ class attachments {
 		} else {
 			$json_str = $att_arr_exist ? $att_arr_exist.'||'.$json_str : $json_str;
 			param::set_cookie('att_json',$json_str);
-			return true;			
+			return true;
 		}
 	}
-	
+
 	/**
 	 * 删除swfupload上传的json格式cookie
-	 */	
+	 */
 	public function swfupload_json_del() {
 		$arr['aid'] = intval($_GET['aid']);
 		$arr['src'] = trim($_GET['src']);
@@ -264,13 +264,13 @@ class attachments {
 		$att_arr_exist = str_replace(array($json_str,'||||'), array('','||'), $att_arr_exist);
 		$att_arr_exist = preg_replace('/^\|\|||\|\|$/i', '', $att_arr_exist);
 		param::set_cookie('att_json',$att_arr_exist);
-	}	
+	}
 
 	private function att_not_used() {
 		$this->att_db= pc_base::load_model('attachment_model');
 		//获取临时未处理文件列表
 		if($att_json = param::get_cookie('att_json')) {
-			if($att_json) $att_cookie_arr = explode('||', $att_json);	
+			if($att_json) $att_cookie_arr = explode('||', $att_json);
 			foreach ($att_cookie_arr as $_att_c) $att[] = json_decode($_att_c,true);
 			if(is_array($att) && !empty($att)) {
 				foreach ($att as $n=>$v) {
@@ -286,11 +286,11 @@ class attachments {
 					}
 					$this->cookie_att .=	'|'.$v['src'];
 				}
-			}			
+			}
 		}
 		return $att;
 	}
-	
+
 	final public static function admin_tpl($file, $m = '') {
 		$m = empty($m) ? ROUTE_M : $m;
 		if(empty($m)) return false;
@@ -298,6 +298,108 @@ class attachments {
 	}
 	final public static function get_siteid() {
 		return get_siteid();
-	}	
+	}
+
+	public function webuploader() {
+		$grouplist = getcache('grouplist', 'member');
+		if (isset($_POST['dosubmit'])) {
+			if ($_POST['swf_auth_key'] != md5(pc_base::load_config('system', 'auth_key') . $_POST['SWFUPLOADSESSID']) || ($_POST['isadmin'] == 0 && !$grouplist[$_POST['groupid']]['allowattachment'])) exit('403');
+			pc_base::load_sys_class('attachment', '', 0);
+			$attachment = new attachment($_POST['module'], $_POST['catid'], $_POST['siteid']);
+			$attachment->set_userid($_POST['userid']);
+			$siteid = get_siteid();
+			$site_setting = get_site_setting($siteid);
+			$site_allowext = $site_setting['upload_allowext'];
+			$aids = $attachment->upload('file', $site_allowext, '', '', array($_POST['thumb_width'], $_POST['thumb_height']), $_POST['watermark_enable']);
+			if ($aids[0]) {
+				$filename = (strtolower(CHARSET) != 'utf-8') ? iconv('gbk', 'utf-8', $attachment->uploadedfiles[0]['filename']) : $attachment->uploadedfiles[0]['filename'];
+				if ($attachment->uploadedfiles[0]['isimage']) {
+					$data = array(
+						'id'       => $aids[0],
+						'src'      => $this->upload_url . $attachment->uploadedfiles[0]['filepath'],
+						'ext'      => $attachment->uploadedfiles[0]['isimage'],
+						'filename' => $filename
+					);
+				} else {
+					$fileext = $attachment->uploadedfiles[0]['fileext'];
+					switch ($fileext) {
+						case 'zip':
+						case 'rar':
+							$fileext = 'rar';
+							break;
+						case 'doc':
+						case 'docx':
+							$fileext = 'doc';
+							break;
+						case 'xls':
+						case 'xlsx':
+							$fileext = 'xls';
+							break;
+						case 'ppt':
+						case 'pptx':
+							$fileext = 'ppt';
+							break;
+						case 'flv':
+						case 'swf':
+						case 'rm':
+						case 'rmvb':
+							$fileext = 'flv';
+							break;
+						default:
+							$fileext = 'do';
+							break;
+					}
+					$data = array(
+						'id'       => $aids[0],
+						'src'      => $this->upload_url . $attachment->uploadedfiles[0]['filepath'],
+						'ext'      => $fileext,
+						'filename' => $filename
+					);
+				}
+				echo json_encode($data);
+				exit;
+			} else {
+				echo '0,' . $attachment->error();
+				exit;
+			}
+		} else {
+			if ($this->isadmin == 0 && !$grouplist[$this->groupid]['allowattachment']) {
+				showmessage(L('att_no_permission'));
+			}
+			$args = $_GET['args'];
+			$authkey = $_GET['authkey'];
+			if (upload_key($args) != $authkey) {
+				showmessage(L('attachment_parameter_error'));
+			}
+			$siteid = $this->get_siteid();
+			$sess_id = SYS_TIME;
+			$swf_auth_key = md5(pc_base::load_config('system', 'auth_key') . $sess_id);
+			$userid_flash = sys_auth($this->userid, 'ENCODE');
+			$site_setting = get_site_setting($siteid);
+			$_args = explode(',',$args);
+			$allowext = explode('|', $_args[1] ? $_args[1] : $site_setting['upload_allowext']);
+			$_ext = array();
+			foreach ($allowext as $k => $v) {
+				$v = '.' . $v;
+				$_ext[$k] = $v;
+			}
+			$file_types = implode(',', $_ext);
+			$file_types_post = implode(',', $allowext);
+			$file_upload_limit = intval($_args[0]) ? intval($_args[0]) : '8';
+			$file_size_limit = $site_setting['upload_maxsize'];
+			$thumb_width = intval($_args[3]);
+			$thumb_height = intval($_args[4]);
+			$watermark_enable = $_args[5] == '' ? 1 : intval($_args[5]);
+			$allowupload = intval($_args[2]);
+			$admin_url = pc_base::load_config('system', 'admin_url');
+			$upload_path = empty($admin_url) ? APP_PATH : SITE_PROTOCOL.$admin_url.'/';
+			//获取临时未处理文件列表
+			$att_not_used = param::get_cookie('att_json');
+			if (empty($att_not_used) || !isset($att_not_used)) $tab_status = ' class="on"';
+			if (!empty($att_not_used)) $div_status = ' hidden';
+			$att = $this->att_not_used();
+			include $this->admin_tpl('webuploader');
+		}
+	}
 }
 ?>

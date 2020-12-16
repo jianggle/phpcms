@@ -1,0 +1,225 @@
+.webuploader-container {
+	position: relative;
+	float: left;
+	display: inline-block;
+	line-height: 1.428571429;
+	vertical-align: middle;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick, #ctlBtn {
+	display: inline-block;
+	background: url(bnt.png) no-repeat;
+	width: 75px;
+	height: 28px;
+	margin-right: 10px;
+	font-weight: 700;
+	color: #fff;
+}
+.webuploader-pick {
+	padding: 0;
+	background-position: left bottom;
+	border-radius:0;
+	line-height: 28px;
+	text-align: center;
+}
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+#ctlBtn {
+	float: left;
+	vertical-align: middle;
+	border: none;
+	cursor: pointer;
+}
+
+/*上传状态样式*/
+.progressWrapper {
+	overflow: hidden;
+}
+
+.progressContainer {
+	margin: 5px;
+	padding: 4px;
+	border: solid 1px #E8E8E8;
+	background-color: #F7F7F7;
+	overflow: hidden;
+}
+
+/* Message */
+.message {
+	margin: 1em 0;
+	padding: 10px 20px;
+	border: solid 1px #FFDD99;
+	background-color: #FFFFCC;
+	overflow: hidden;
+}
+
+/* Error */
+.red {
+	border: solid 1px #B50000;
+	background-color: #FFEBEB;
+}
+
+/* Current */
+.green {
+	border: solid 1px #DDF0DD;
+	background-color: #EBFFEB;
+}
+
+/* Complete */
+.blue {
+	border: solid 1px #CEE2F2;
+}
+
+.progressName {
+	font-size: 8pt;
+	font-weight: 700;
+	color: #555;
+	width: 200px;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	height: 26px;
+	line-height: 26px;
+	float: left;
+}
+
+.progresshidden {
+	display: none;
+}
+
+.progressBarComplete,
+.progressBarInProgress,
+.progressBarComplete,
+.progressBarError {
+	font-size: 0;
+	width: 0;
+	height: 2px;
+	background-color: blue;
+	margin-top: 2px;
+}
+
+.progressBarComplete {
+	width: 100%;
+	background-color: green;
+	visibility: hidden;
+}
+
+.progressBarError {
+	width: 100%;
+	background-color: red;
+	visibility: hidden;
+}
+
+.progressBarStatus {
+	width: 200px;
+	font-size: 12px;;
+	font-family: Arial;
+	text-align: left;
+	white-space: nowrap;
+	float: left;
+	height: 24px;
+	line-height: 24px
+}
+
+a.progressCancel {
+	font-size: 0;
+	display: block;
+	height: 16px;
+	width: 16px;
+	background-image: url(../swfupload/images/cross.png);
+	background-repeat: no-repeat;
+	background-position: 0 4px;
+	float: right;
+}
+
+a.progressCancel:hover {
+	background-position: 0 bottom;
+}
+
+/*附件列表样式*/
+.img-wrap {
+	border: 1px solid #eee;
+	text-align: center;
+	overflow: hidden;
+	background: #fff
+}
+
+.img-wrap a {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	*display: block;
+}
+
+.attachment-list {
+	overflow: hidden
+}
+
+.attachment-list li {
+	width: 25%;
+	*width: 24.99%;
+	overflow: hidden;
+	padding: 10px 0;
+	float: left
+}
+
+.attachment-list .img-wrap {
+	width: 104px;
+	height: 94px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.attachment-list .img-wrap {
+	text-align: center;
+	overflow: hidden;
+	background: #fff;
+	border: none;
+	position: relative
+}
+
+.attachment-list .img-wrap a {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	*display: block;
+	border: 1px solid #eee;
+	width: 101px;
+	height: 91px;
+	*font-size: 67px;
+}
+
+.attachment-list .img-wrap a:hover, .attachment-list .img-wrap a.on {
+	border-color: #d0def1;
+	background: #f3f6fa
+}
+
+.attachment-list .img-wrap a.off .icon {
+	background: url(../swfupload/images/off.png) no-repeat;
+	height: 17px;
+	bottom: 5px;
+	*bottom: 3px;
+	right: 3px;
+	z-index: 100;
+	position: absolute;
+	overflow: hidden;
+	width: 98px;
+}
+
+.attachment-list .img-wrap a.on .icon {
+	background: url(../../images/msg_bg.png) no-repeat left -249px;
+	width: 16px;
+	height: 18px;
+	bottom: 4px;
+	*bottom: 2px;
+	right: 3px;
+	z-index: 100;
+	position: absolute;
+	overflow: hidden
+}

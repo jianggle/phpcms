@@ -1,7 +1,7 @@
 function flashupload(uploadid, name, textareaid, funcName, args, module, catid, authkey) {
 	var args = args ? '&args='+args : '';
 	var setting = '&module='+module+'&catid='+catid+'&authkey='+authkey;
-	window.top.art.dialog({title:name,id:uploadid,iframe:'index.php?m=attachment&c=attachments&a=swfupload'+args+setting,width:'500',height:'420'}, function(){ if(funcName) {funcName.apply(this,[uploadid,textareaid]);}else {submit_ckeditor(uploadid,textareaid);}}, function(){window.top.art.dialog({id:uploadid}).close()});
+	window.top.art.dialog({title:name,id:uploadid,iframe:'index.php?m=attachment&c=attachments&a=webuploader'+args+setting,width:'500',height:'420'}, function(){ if(funcName) {funcName.apply(this,[uploadid,textareaid]);}else {submit_ckeditor(uploadid,textareaid);}}, function(){window.top.art.dialog({id:uploadid}).close()});
 }
 
 function submit_ckeditor(uploadid,textareaid){
@@ -18,7 +18,6 @@ function submit_images(uploadid,returnid){
 	IsImg(in_content[0]) ? $('#'+returnid).attr("value",in_content[0]) : alert('选择的类型必须为图片类型');
 }
 
-
 function submit_attachment(uploadid,returnid){
 	var d = window.top.art.dialog({id:uploadid}).data.iframe;
 	var in_content = d.$("#att-status").html().substring(1);
@@ -34,7 +33,7 @@ function submit_files(uploadid,returnid){
 	$('#'+returnid).attr("value",new_filepath);
 }
 
-function insert2editor(id,in_content,del_content) {	
+function insert2editor(id,in_content,del_content) {
 	if(in_content == '') {return false;}
 	var data = in_content.substring(1).split('|');
 	var img = '';
@@ -46,35 +45,35 @@ function insert2editor(id,in_content,del_content) {
 }
 
 function IsImg(url){
-  var sTemp;
-  var b=false;
-  var opt="jpg|gif|png|bmp|jpeg";
-  var s=opt.toUpperCase().split("|");
-  for (var i=0;i<s.length ;i++ ){
-    sTemp=url.substr(url.length-s[i].length-1);
-    sTemp=sTemp.toUpperCase();
-    s[i]="."+s[i];
-    if (s[i]==sTemp){
-      b=true;
-      break;
-    }
-  }
-  return b;
+	var sTemp;
+	var b=false;
+	var opt="jpg|gif|png|bmp|jpeg";
+	var s=opt.toUpperCase().split("|");
+	for (var i=0;i<s.length ;i++ ){
+		sTemp=url.substr(url.length-s[i].length-1);
+		sTemp=sTemp.toUpperCase();
+		s[i]="."+s[i];
+		if (s[i]==sTemp){
+			b=true;
+			break;
+		}
+	}
+	return b;
 }
 
 function IsSwf(url){
-	  var sTemp;
-	  var b=false;
-	  var opt="swf";
-	  var s=opt.toUpperCase().split("|");
-	  for (var i=0;i<s.length ;i++ ){
-	    sTemp=url.substr(url.length-s[i].length-1);
-	    sTemp=sTemp.toUpperCase();
-	    s[i]="."+s[i];
-	    if (s[i]==sTemp){
-	      b=true;
-	      break;
-	    }
-	  }
-	  return b;
+	var sTemp;
+	var b=false;
+	var opt="swf";
+	var s=opt.toUpperCase().split("|");
+	for (var i=0;i<s.length ;i++ ){
+		sTemp=url.substr(url.length-s[i].length-1);
+		sTemp=sTemp.toUpperCase();
+		s[i]="."+s[i];
+		if (s[i]==sTemp){
+			b=true;
+			break;
+		}
 	}
+	return b;
+}
