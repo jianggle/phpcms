@@ -1,21 +1,23 @@
 <?php
-defined('IN_PHPCMS') or exit('No permission resources.'); 
+defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_class('admin','admin',0);
 
 class address extends admin {
-	
+
 	public function __construct() {
 		parent::__construct();
 	}
-	
+
 	public function init() {
 		include $this->admin_tpl('address');
 	}
-	
+
 	public function update() {
 		set_time_limit(120);
 		$old_attachment_path = isset($_POST['old_attachment_path']) && trim($_POST['old_attachment_path']) ? trim($_POST['old_attachment_path']) : showmessage(L('old_attachment_address_empty'));
 		$new_attachment_path = isset($_POST['new_attachment_path']) && trim($_POST['new_attachment_path']) ? trim($_POST['new_attachment_path']) : showmessage(L('new_attachment_address_empty'));
+		$old_attachment_path2 = str_replace('/','\\\\/',$old_attachment_path);
+		$new_attachment_path2 = str_replace('/','\\\\/',$new_attachment_path);
 		//获取数据表列表
 		$db = pc_base::load_model('site_model');
 		$r = $db->query("show tables");
@@ -34,13 +36,12 @@ class address extends admin {
 				foreach ($s as $key=>$val) {
 					//对数据表进行过滤，只有CHAR、TEXT或mediumtext类型的字段才可以保存下附件的地址。
 					if (preg_match('/(char|text|mediumtext)+/i', $val)) {
-						$sql .= !empty($sql) ? ", `$key`=replace(`$key`, '$old_attachment_path', '$new_attachment_path')" : "`$key`=replace(`$key`, '$old_attachment_path', '$new_attachment_path')";
+						$sql .= !empty($sql) ? ", `$key`=replace(replace(`$key`, '$old_attachment_path2', '$new_attachment_path2'), '$old_attachment_path', '$new_attachment_path')" : "`$key`=replace(replace(`$key`, '$old_attachment_path2', '$new_attachment_path2'), '$old_attachment_path', '$new_attachment_path')";
 					}
 				}
 				if (!empty($sql)) $modle_table_db->query("UPDATE ".$db->db_tablepre.$table_name." SET $sql");
 			}
 		}
 		showmessage(L('operation_success'));
-		
 	}
 }
