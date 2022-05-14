@@ -1428,10 +1428,8 @@ INSERT INTO `phpcms_module` VALUES ('release', '发布点', '', '1', '1.0', '', 
 -- ----------------------------
 -- Records of phpcms_type
 -- ----------------------------
-INSERT INTO `phpcms_type` (`siteid`, `typeid`, `module`, `modelid`, `name`, `parentid`, `typedir`, `url`, `template`, `listorder`, `description`) VALUES('1', '52', 'search', '0', '专题', '0', 'special', '', '', '4', '专题');
 INSERT INTO `phpcms_type` (`siteid`, `typeid`, `module`, `modelid`, `name`, `parentid`, `typedir`, `url`, `template`, `listorder`, `description`) VALUES('1', '1', 'search', '1', '新闻', '0', '', '', '', '1', '新闻模型搜索');
-INSERT INTO `phpcms_type` (`siteid`, `typeid`, `module`, `modelid`, `name`, `parentid`, `typedir`, `url`, `template`, `listorder`, `description`) VALUES('1', '2', 'search', '2', '下载', '0', '', '', '', '3', '下载模型搜索');
-INSERT INTO `phpcms_type` (`siteid`, `typeid`, `module`, `modelid`, `name`, `parentid`, `typedir`, `url`, `template`, `listorder`, `description`) VALUES('1', '3', 'search', '3', '图片', '0', '', '', '', '2', '图片模型搜索');
+INSERT INTO `phpcms_type` (`siteid`, `typeid`, `module`, `modelid`, `name`, `parentid`, `typedir`, `url`, `template`, `listorder`, `description`) VALUES('1', '2', 'search', '3', '图片', '0', '', '', '', '2', '图片模型搜索');
 
 
 

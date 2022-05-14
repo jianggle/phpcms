@@ -8,10 +8,9 @@ class search_type extends admin {
 		$this->db = pc_base::load_model('type_model');
 		$this->siteid = $this->get_siteid();
 		$this->model = getcache('model','commons');
-		$this->yp_model = getcache('yp_model','model');
 		$this->module_db = pc_base::load_model('module_model');
 	}
-	
+
 	public function init () {
 		$datas = array();
 		$page = isset($_GET['page']) && trim($_GET['page']) ? intval($_GET['page']) : 1;
@@ -32,35 +31,22 @@ class search_type extends admin {
 			if($_POST['module']=='content') {
 				$_POST['info']['modelid'] = intval($_POST['info']['modelid']);
 				$_POST['info']['typedir'] = $_POST['module'];
-			} elseif($_POST['module']=='yp') {
-				$_POST['info']['modelid'] = intval($_POST['info']['yp_modelid']);
-				$_POST['info']['typedir'] = $_POST['module'];				
 			} else {
 				$_POST['info']['typedir'] = $_POST['module'];
 				$_POST['info']['modelid'] = 0;
 			}
-			
-			//删除黄页模型变量无该字段
-			unset($_POST['info']['yp_modelid']);
 
 			$this->db->insert($_POST['info']);
 			showmessage(L('add_success'), '', '', 'add');
 		} else {
 			$show_header = $show_validator = '';
-			
+
 			foreach($this->model as $_key=>$_value) {
 				if($_value['siteid']!=$this->siteid) continue;
 				$model_data[$_key] = $_value['name'];
 			}
-			if(is_array($this->yp_model)){
-				foreach($this->yp_model as $_key=>$_value) {
-					if($_value['siteid']!=$this->siteid) continue;
-					$yp_model_data[$_key] = $_value['name'];
-				}	
-			}
-					
 
-			$module_data = array('special' => L('special'),'content' => L('content').L('module'),'yp'=>L('yp'));
+			$module_data = array('special' => L('special'),'content' => L('content').L('module'));
 
 			include $this->admin_tpl('type_add');
 		}
@@ -68,20 +54,14 @@ class search_type extends admin {
 	public function edit() {
 		if(isset($_POST['dosubmit'])) {
 			$typeid = intval($_POST['typeid']);
-			
+
 			if($_POST['module']=='content') {
 				$_POST['info']['modelid'] = intval($_POST['info']['modelid']);
-			} elseif($_POST['module']=='yp') {
-				$_POST['info']['modelid'] = intval($_POST['info']['yp_modelid']);
-				$_POST['info']['typedir'] = $_POST['module'];				
 			} else {
 				$_POST['info']['typedir'] = $_POST['typedir'];
 				$_POST['info']['modelid'] = 0;
 			}
-				
-			//删除黄页模型变量无该字段
-			unset($_POST['info']['yp_modelid']);
-	
+
 			$this->db->update($_POST['info'],array('typeid'=>$typeid));
 			showmessage(L('update_success'), '', '', 'edit');
 		} else {
@@ -91,12 +71,8 @@ class search_type extends admin {
 				if($_value['siteid']!=$this->siteid) continue;
 				$model_data[$_key] = $_value['name'];
 			}
-			foreach($this->yp_model as $_key=>$_value) {
-				if($_value['siteid']!=$this->siteid) continue;
-				$yp_model_data[$_key] = $_value['name'];
-			}
-						
-			$module_data = array('special' => L('special'),'content' => L('content').L('module'),'yp'=>L('yp'));
+
+			$module_data = array('special' => L('special'),'content' => L('content').L('module'));
 			$r = $this->db->get_one(array('typeid'=>$typeid));
 
 			extract($r);
@@ -108,7 +84,7 @@ class search_type extends admin {
 		$this->db->delete(array('typeid'=>$_GET['typeid']));
 		showmessage(L('operation_success'), HTTP_REFERER);
 	}
-	
+
 	/**
 	 * 排序
 	 */
@@ -122,7 +98,7 @@ class search_type extends admin {
 			showmessage(L('operation_failure'));
 		}
 	}
-	
+
 	public function cache() {
 		$datas = $search_model = array();
 		$result_datas = $result_datas2 = $this->db->select(array('siteid'=>$this->siteid,'module'=>'search'),'*',1000,'listorder ASC');
@@ -135,7 +111,7 @@ class search_type extends admin {
 		}
 
 		setcache('type_model_'.$this->siteid,$datas,'search');
-		$datas = array();	
+		$datas = array();
 		foreach($result_datas2 as $_key=>$_value) {
 			if($_value['modelid']) continue;
 			$datas[$_value['typedir']] = $_value['typeid'];

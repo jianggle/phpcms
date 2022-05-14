@@ -90,7 +90,7 @@ function creat_form($id, $data, $value = '', $op = '') {
 				$ajax = 'onblur="'.$url.'"';
 			}
 			$str .= '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" size="30" />';
-			
+
 			break;
 		case 'select':
 			if($data['ajax']['name']) {
@@ -117,33 +117,18 @@ function creat_form($id, $data, $value = '', $op = '') {
 			}
 			$str .= '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" size="30" />'.form::select($data['data'], $value, "name='select_$id' id='select_$id' onchange=\"$('#$id').val(this.value);$ajax\"");
 			break;
-		
 		case 'input_select_category':
 			if($data['ajax']['name']) {
 				$ajax = ';'.$url;
 			}
 			$str .= '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" size="30" />'.form::select_category('', $value, "name='select_$id' id='select_$id' onchange=\"$('#$id').val(this.value);$ajax\"", '', (isset($data['data']['modelid']) ? $data['data']['modelid'] : 0), (isset($data['data']['type']) ? $data['data']['type'] : -1), (isset($data['data']['onlysub']) ? $data['data']['onlysub'] : 0));
 			break;
-
-		case 'select_yp_model':
-			if($data['ajax']['name']) {
-				$ajax = ';'.$url;
-			}
-			$yp_models = getcache('yp_model', 'commons');
-			$d = array(L('please_select'));
-			if (is_array($yp_models) && !empty($yp_models)) {
-				foreach ($yp_models as $k =>$v) {
-					$d[$k] = $v['name'];
-				}
-			}
-			$str .= '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" size="30" />'.form::select($d, $value, "name='select_$id' id='select_$id' onchange=\"$('#$id').val(this.value);$ajax\"");
-			break;
 	}
 	if (!empty($data['validator'])) {
 		$str .= '<script type="text/javascript">$(function(){$("#'.$id.'").formValidator({onshow:"'.L('input').$data['name'].'。",onfocus:"'.L('input').$data['name'].'。"'.($data['empty'] ? ',empty:true' : '').'})';
 		if ($data['htmltype'] != 'select' && (isset($data['validator']['min']) || isset($data['validator']['max']))) {
 			$str .= ".inputValidator({".(isset($data['validator']['min']) ? 'min:'.$data['validator']['min'].',' : '').(isset($data['validator']['max']) ? 'max:'.$data['validator']['max'].',' : '')." onerror:'".$data['name'].L('should', '', 'template').(isset($data['validator']['min']) ? ' '.L('is_greater_than', '', 'template').$data['validator']['min'].L('lambda', '', 'template') : '').(isset($data['validator']['max']) ? ' '.L('less_than', '', 'template').$data['validator']['max'].L('lambda', '', 'template') : '')."。'})";
-			
+
 		}
 		if ($data['htmltype'] != 'checkbox' && $data['htmltype'] != 'radio' && isset($data['validator']['reg'])) {
 			$str .= '.regexValidator({regexp:"'.$data['validator']['reg'].'"'.(isset($data['validator']['reg_param']) ? ",param:'".$data['validator']['reg_param']."'" : '').(isset($data['validator']['reg_msg']) ? ',onerror:"'.$data['validator']['reg_msg'].'"' : '').'})';
@@ -192,6 +177,6 @@ function visualization($html, $style = '', $dir = '', $file = '') {
 	})</script><div id=\"PC__contentHeight\" style=\"display:none\">80</div>";
 		$html = str_replace('</body>', $change.'</body>', $html, $num);
 		if (!$num) $html .= $change;
-		
+
 		return $html;
 }

@@ -16,9 +16,7 @@ include $this->admin_tpl('header','admin');
 	<tr>
     <th width="120"><?php echo L('select_module_name')?>：</th>
     <td class="y-bg"><?php
-	if($modelid && $typedir == 'yp') {
-		$module = 'yp';
-	} elseif($modelid && $typedir != 'yp') {
+	if($modelid) {
 		$module = 'content';
 	} else {
 		$module = $module;
@@ -26,21 +24,12 @@ include $this->admin_tpl('header','admin');
 	echo form::select($module_data,$module,'name="module" onchange="change_module(this.value)" disabled')?></td>
 	<input name="module" type="hidden" value="<?php echo $module?>"><input name="typedir" type="hidden" value="<?php echo $typedir?>">
   </tr>
-
-  <?php if($modelid && $typedir != 'yp') {?>
+  <?php if($modelid) {?>
   <tr id="modelid_display">
     <th width="120"><?php echo L('select_model_name')?>：</th>
     <td class="y-bg"><?php echo form::select($model_data,$modelid,'name="info[modelid]"')?></td>
   </tr>
   <?php }?>
-
-  <?php if($modelid && $typedir == 'yp') {?>
-  <tr id="yp_modelid_display">
-    <th width="120"><?php echo L('select_model_name')?>：</th>
-    <td class="y-bg"><?php echo form::select($yp_model_data,$modelid,'name="info[yp_modelid]"')?></td>
-  </tr>
-  <?php }?>
-
   <tr>
     <th width="120"><?php echo L('type_name')?>：</th>
     <td class="y-bg"><input type="text" class="input-text" name="info[name]" id="name" size="30" value="<?php echo $name?>"/></td>
@@ -50,12 +39,10 @@ include $this->admin_tpl('header','admin');
     <td class="y-bg"><textarea name="info[description]" maxlength="255" style="width:300px;height:60px;"><?php echo $description?></textarea></td>
   </tr>
 </table>
-
 <div class="bk15"></div>
-	<input type="hidden" name="typeid" value="<?php echo $typeid?>"> 
+	<input type="hidden" name="typeid" value="<?php echo $typeid?>">
     <input type="submit" class="dialog" id="dosubmit" name="dosubmit" value="<?php echo L('submit')?>" />
 </form>
-
 </div>
 <SCRIPT LANGUAGE="JavaScript">
 <!--

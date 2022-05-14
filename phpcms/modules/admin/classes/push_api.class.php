@@ -136,7 +136,7 @@ class push_api {
 						$info['id'] = $info['listorder'] = $d['id'];
 						$info['catid'] = $catid;
 						$info['posid'] = $pid;
-						$info['module'] = $model == 'yp_content_model' ? 'yp' : 'content';
+						$info['module'] = 'content';
 						$info['modelid'] = $modelid;
 						$fields_arr = $fields_value = '';
 						foreach($fulltext_array AS $key=>$value){

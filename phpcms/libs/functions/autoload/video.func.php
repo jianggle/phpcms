@@ -8,9 +8,9 @@ function get_views($hitsid) {
 	global $db;
 	if(!$hitsid){ return false;}
 	$db = pc_base::load_model('hits_model');
-    $r = $db->get_one(array('hitsid'=>$hitsid));  
+    $r = $db->get_one(array('hitsid'=>$hitsid));
 	if($r){
-		echo $r['views'];	
+		echo $r['views'];
 	}else{
 		echo '0';
 	}
@@ -24,9 +24,9 @@ function get_comments($commentid) {
 	global $db;
 	if(!$commentid){return false;}
 	$db = pc_base::load_model('comment_model');
-    $r = $db->get_one(array('commentid'=>$commentid));  
+    $r = $db->get_one(array('commentid'=>$commentid));
 	if($r){
-		echo $r['total'];	
+		echo $r['total'];
 	}else{
 		echo '0';
 	}
@@ -45,7 +45,7 @@ function get_pic($id,$catid) {
 	$db->set_catid($catid);
 	$r = $db->get_content($catid,$id);
    	if($r){
-		return $r;	
+		return $r;
  	}else{
 		return '0';
 	}
@@ -90,7 +90,6 @@ function video_filters_url($fieldname,$array=array(),$type = 1,$modelid, $isphp 
 	} else {
 		$array = array_merge($_GET,$array);
 	}
-	//$setting = getcache('yp_setting', 'yp');
 	//TODO
 	$fields = getcache('model_field_'.$modelid,'model');
 	if(is_array($fields) && !empty($fields)) {
@@ -142,14 +141,14 @@ function video_filters_sql($modelid,$catid) {
 	//TODO
 	$siteid = get_siteid();
 	$sql = '`status` = \'99\'';
-	
+
 	$category = getcache('category_content_'.$siteid);
 	if ($category[$catid]['child']) {
 		$sql .= ' AND `catid` IN('.$datas[$catid]['arrchildid'].')';
 	} else {
 		$sql .= ' AND `catid`=\''.$catid.'\'';
 	}
-	
+
 	foreach ($_GET as $k=>$r) {
 		if(in_array($k,$fields_key) && intval($r)!=0 && ($fields[$k]['filtertype'] || $fields[$k]['rangetype'])) {
 			if($fields[$k]['formtype'] == 'linkage') {
@@ -198,7 +197,7 @@ function player_code($id = 'video_player',$channelid,$vid,$width = 622, $height 
 	if(!$channelid) return 'channelid empty!';
 	if(!$vid) return 'vid empty!';
 	$player = getcache('player', 'video');
-	
+
 	$player_config = $player[$channelid];
 	$default_style = $player_config['default'];
 

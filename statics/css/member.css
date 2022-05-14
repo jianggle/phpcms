@@ -32,7 +32,7 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 	.nav-bar ul li a.on{ background-position: left -0px; padding-top:0}
 	.nav-bar ul li a.on span{background-position: right -0px;height:27px;padding:5px 10px 0 8px}
 	.nav-bar ul li a.on{color:#fff; }
-	
+
 .col-1{position:relative; border:1px solid #c4d5df; zoom:1;background: url(../images/member/member_title.png) repeat-x}
 .col-1 span.o1,
 	.col-1 span.o2,
@@ -135,31 +135,4 @@ body fieldset.blue legend{padding:3px 8px;font-weight:700;color:#347add; backgro
 #pages span { display:inline-block; width:26px; height:22px; line-height:22px; background:#5a85b2; border:1px solid #5a85b2; color:#fff; text-align:center; }
 .page .noPage { display:inline-block; width:56px; height:22px; line-height:22px; background:url(../img/icu/titleBg.png) repeat-x 0 -55px ; border:1px solid #e3e3e3; text-align:center; color:#a4a4a4; }
 
-/*以下黄页增加的样式 tab*/
-.tab-but{ border-bottom:1px solid #c4d5df; padding:0 10px; margin:14px 10px 10px}
-.tab-but a,.tab-but a span{ color:#1975c8;display:inline-block;zoom:1;*display:inline; height:25px; line-height:100%;background:url(../images/member/tab_bg.png) no-repeat}
-.tab-but a{padding-left:14px; margin-right:5px; background-color:#f7fafb; }
-.tab-but a span{background-position:right top; padding-right:14px; padding-top:8px; height:17px}
-.tab-but a.on{ background-color:#FFF;position:relative;margin-bottom:-1px;*bottom:-1px; height:26px; font-weight:700}
-
-.left-info li a{ background:url(../images/member/left_icon.png) no-repeat left center; padding-left:8px}
-.left-info li a.add{ background-image:none; padding:0}
-
-/*模板列表*/
-.temp-list{float:left; width:215px; margin-right:14px; padding:5px; margin-bottom:16px}
-.temp-list a.img{ display:block; float:left;height: 98px;padding: 1px;width: 98px;border: 1px solid #EAEAEA; margin-right:8px}
-.temp-list a.img:hover{ border-style: dashed; border-color:#999}
-.temp-list ul{ overflow:hidden;_float:left;zoom:1}
-.temp-list ul li{border-bottom: 1px dashed #DDDDDD; height:25px; line-height:25px}
-
-/*附加参数*/
-#addition_param { padding-top:16px}
-#addition_param h5{border-bottom: 1px solid #E7E7E7;color: #383838; padding-bottom:6px}
-
-.products-para td,.products-para th{ border:1px solid #c3d4e7; line-height:30px}
-.products-para th{ background-color:#f6f9fc; font-weight:normal; text-align:right; padding-right:10px; width:100px}
-.products-para caption{ border:1px solid #c3d4e7; font-weight:700; border-bottom:none; background:url(../images/yp/xbg.png) left -40px; height:26px; line-height:26px;padding-left:10px; text-align:left}
-.products-para thead td,.products-para thead th{ background-color:#F6F9FC}
-.products-para thead td{ text-align:center}
-.products-para td{ padding-left:6px}
 .home{background: url("../images/v9/icon.png") no-repeat left -40px; padding-left:18px;}

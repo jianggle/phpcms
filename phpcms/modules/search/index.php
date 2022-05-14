@@ -101,14 +101,6 @@ class index {
 					//是否读取其他模块接口
 					if($modelid) {
 						$this->content_db->set_model($modelid);
-						/**
-						* 如果表名为空，则为黄页模型
-						*/
-						if(empty($this->content_db->model_tablename)) {
-							$this->content_db = pc_base::load_model('yp_content_model');
-							$this->content_db->set_model($modelid);
-
-						}
 						$datas = $this->content_db->select($where, '*');
 					}
 					$data = array_merge($data,$datas);

@@ -23,12 +23,6 @@ include $this->admin_tpl('header','admin');
     <td class="y-bg"><?php echo form::select($model_data,'','name="info[modelid]"')?></td>
   </tr>
   <?php }?>
-  <?php if($_GET['module'] == 'yp') {?>
-  <tr id="yp_modelid_display">
-    <th width="120"><?php echo L('select_model_name')?>：</th>
-    <td class="y-bg"><?php echo form::select($yp_model_data,'','name="info[yp_modelid]"')?></td>
-  </tr>
-  <?php }?>
   <tr>
     <th width="120"><?php echo L('type_name')?>：</th>
     <td class="y-bg"><input type="text" class="input-text" name="info[name]" id="name" size="30" /></td>
