@@ -59,43 +59,44 @@ include $this->admin_tpl('header');
 <div class="bk10"></div>
 <fieldset>
 <legend><?php echo L('my_message')?></legend>
-<table width="100%"  class="table_form">
- <tr>
-   <th width="80"><?php echo L('my_tel')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="tel" id="tel" size="30" value="<?php echo $data['tel']?>" /></td>
- </tr>
- <tr>
-   <th><?php echo L('my_phone')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="phone" id="phone" size="30" value="<?php echo $data['phone']?>" /></td>
- </tr>
- <tr>
-   <th><?php echo L('my_fax')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="fax" id="fax" size="30" value="<?php echo $data['fax']?>" /></td>
- </tr>
- <tr>
-   <th><?php echo L('my_address')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="address" id="address" size="30" value="<?php echo $data['address']?>" /></td>
- </tr>
- <tr>
-   <th><?php echo L('my_weibo')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="weibo" id="weibo" size="30" value="<?php echo $data['weibo']?>" /></td>
- </tr>
- <tr>
-   <th><?php echo L('my_wechat')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="wechat" id="wechat" size="30" value="<?php echo $data['wechat']?>" /></td>
- </tr>
-<tr>
-   <th><?php echo L('my_qq')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="qq" id="qq" size="30" value="<?php echo $data['qq']?>" /></td>
- </tr>
-<tr>
-   <th><?php echo L('my_email')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="email" id="email" size="30" value="<?php echo $data['email']?>" /></td>
- </tr>
-<tr>
-   <th><?php echo L('my_icp')?>：</th>
-   <td class="y-bg"><input type="text" class="input-text" name="icp" id="icp" size="30" value="<?php echo $data['icp']?>" /></td>
- </tr>
+	<table width="100%"  class="table_form">
+		<tr>
+			<th width="80"><?php echo L('my_tel')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[tel]" id="tel" size="30" value="<?php echo $custominfo['tel']?>"/></td>
+		</tr>
+		<tr>
+			<th><?php echo L('my_phone')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[phone]" id="phone" size="30" value="<?php echo $custominfo['phone']?>"/></td>
+		</tr>
+		<tr>
+			<th><?php echo L('my_fax')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[fax]" id="fax" size="30" value="<?php echo $custominfo['fax']?>"/></td>
+		</tr>
+		<tr>
+			<th><?php echo L('my_address')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[address]" id="address" size="30" value="<?php echo $custominfo['address']?>"/></td>
+		</tr>
+		<tr>
+			<th><?php echo L('my_weibo')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[weibo]" id="weibo" size="30" value="<?php echo $custominfo['weibo']?>"/></td>
+		</tr>
+		<tr>
+			<th><?php echo L('my_wechat')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[wechat]" id="wechat" size="30" value="<?php echo $custominfo['wechat']?>"/></td>
+		</tr>
+		<tr>
+			<th><?php echo L('my_qq')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[qq]" id="qq" size="30" value="<?php echo $custominfo['qq']?>"/></td>
+		</tr>
+		<tr>
+			<th><?php echo L('my_email')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[email]" id="email" size="30" value="<?php echo $custominfo['email']?>"/></td>
+		</tr>
+		<tr>
+			<th><?php echo L('my_icp')?>：</th>
+			<td class="y-bg"><input type="text" class="input-text" name="custominfo[icp]" id="icp" size="30" value="<?php echo $custominfo['icp']?>"/></td>
+		</tr>
+	</table>
 </table>
 </fieldset>
 <div class="bk10"></div>
@@ -120,8 +121,8 @@ include $this->admin_tpl('header');
   <tr>
     <th width="80" valign="top"><?php echo L('style_name')?>：</th>
     <td class="y-bg"> <select name="template[]" size="3" id="template" multiple title="<?php echo L('ctrl_more_selected')?>" onchange="default_list()">
-    
-    	<?php 
+
+    	<?php
 	    	$default_template_list =  array();
 	    	if (isset($data['template'])) {
 	    		$dirname = explode(',',$data['template']);
@@ -139,7 +140,7 @@ include $this->admin_tpl('header');
   <tr>
     <th width="80" valign="top"><?php echo L('default_style')?>：<input type="hidden" name="default_style" id="default_style_input" value="<?php echo $data['default_style']?>"></th>
     <td class="y-bg"><span id="default_style">
-	<?php 
+	<?php
 		if(is_array($dirname) && !empty($dirname)) foreach ($dirname as $v) {
 			echo '<label><input type="radio" name="default_style_radio" value="'.$v.'" onclick="$(\'#default_style_input\').val(this.value);" '.($data['default_style']==$v ? 'checked' : '').'>'.$default_template_list[$v].'</label>';
 		}
@@ -174,7 +175,7 @@ function default_list() {
   <tr>
     <th width="130" valign="top"><?php echo L('site_att_allow_ext')?></th>
     <td class="y-bg"><input type="text" class="input-text" name="setting[upload_allowext]" id="upload_allowext" size="50" value="<?php echo $setting['upload_allowext']?>"/></td>
-  </tr>  
+  </tr>
     <tr>
     <th><?php echo L('site_att_gb_check')?></th>
     <td class="y-bg"><?php echo $this->check_gd()?></td>
@@ -184,7 +185,7 @@ function default_list() {
 	  <input class="radio_style" name="setting[watermark_enable]" value="1" <?php echo $setting['watermark_enable']==1 ? 'checked="checked"' : ''?> type="radio"> <?php echo L('site_att_watermark_open')?>&nbsp;&nbsp;&nbsp;&nbsp;
 	  <input class="radio_style" name="setting[watermark_enable]" value="0" <?php echo $setting['watermark_enable']==0 ? 'checked="checked"' : ''?> type="radio"> <?php echo L('site_att_watermark_close')?>
      </td>
-  </tr>    
+  </tr>
   <tr>
     <th><?php echo L('site_att_watermark_condition')?></th>
     <td class="y-bg"><?php echo L('site_att_watermark_minwidth')?>
@@ -194,15 +195,15 @@ function default_list() {
   <tr>
     <th width="130" valign="top"><?php echo L('site_att_watermark_img')?></th>
     <td class="y-bg"><input type="text" name="setting[watermark_img]" id="watermark_img" size="30" value="<?php echo $setting['watermark_img'] ? $setting['watermark_img'] : 'mark.gif' ?>"/><?php echo L('site_att_watermark_img_desc')?></td>
-  </tr> 
+  </tr>
    <tr>
     <th width="130" valign="top"><?php echo L('site_att_watermark_pct')?></th>
     <td class="y-bg"><input type="text" class="input-text" name="setting[watermark_pct]" id="watermark_pct" size="10" value="<?php echo $setting['watermark_pct'] ? $setting['watermark_pct'] : '100' ?>" />  <?php echo L('site_att_watermark_pct_desc')?></td>
-  </tr> 
+  </tr>
    <tr>
     <th width="130" valign="top"><?php echo L('site_att_watermark_quality')?></th>
     <td class="y-bg"><input type="text" class="input-text" name="setting[watermark_quality]" id="watermark_quality" size="10" value="<?php echo $setting['watermark_quality'] ? $setting['watermark_quality'] : '80' ?>" /> <?php echo L('site_att_watermark_quality_desc')?></td>
-  </tr> 
+  </tr>
    <tr>
     <th width="130" valign="top"><?php echo L('site_att_watermark_pos')?></th>
     <td>

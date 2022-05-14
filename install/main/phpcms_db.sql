@@ -886,18 +886,10 @@ CREATE TABLE `phpcms_site` (
   `site_title` char(255) DEFAULT '',
   `keywords` char(255) DEFAULT '',
   `description` char(255) DEFAULT '',
-  `tel` varchar(100) DEFAULT '',
-  `phone` varchar(100) DEFAULT '',
-  `fax` varchar(100) DEFAULT '',
-  `address` varchar(100) DEFAULT '',
-  `weibo` varchar(100) DEFAULT '',
-  `wechat` varchar(100) DEFAULT '',
-  `qq` varchar(100) DEFAULT '',
-  `email` varchar(100) DEFAULT '',
-  `icp` varchar(100) DEFAULT '',
   `release_point` text,
   `default_style` char(50) DEFAULT NULL,
   `template` text,
+  `custominfo` mediumtext,
   `setting` mediumtext,
   `uuid` char(40) DEFAULT '',
   PRIMARY KEY (`siteid`)
@@ -1520,7 +1512,7 @@ INSERT INTO `phpcms_admin_role` VALUES ('4', '总编', '总编', '5', '0');
 INSERT INTO `phpcms_admin_role` VALUES ('5', '编辑', '编辑', '1', '0');
 INSERT INTO `phpcms_admin_role` VALUES ('7', '发布人员', '发布人员', '0', '0');
 
-INSERT INTO `phpcms_site` VALUES ('1', '默认站点', '', 'http://test.phpcms.cn/', 'PHPCMS演示站', '关键字', '描述', '028-66669999','18866669999','','成都市某个区某个大道1234号','','','599580031','599580031@qq.com','蜀ICP备123456789号','', 'default', 'default', 'array (\n  \'upload_maxsize\' => \'2048\',\n  \'upload_allowext\' => \'jpg|jpeg|gif|bmp|png|doc|docx|xls|xlsx|ppt|pptx|pdf|txt|rar|zip|swf\',\n  \'watermark_enable\' => \'0\',\n  \'watermark_minwidth\' => \'300\',\n  \'watermark_minheight\' => \'300\',\n  \'watermark_img\' => \'/statics/images/water/mark.png\',\n  \'watermark_pct\' => \'85\',\n  \'watermark_quality\' => \'80\',\n  \'watermark_pos\' => \'9\',\n)', '');
+INSERT INTO `phpcms_site` VALUES ('1', '默认站点', '', 'http://test.phpcms.cn/', 'PHPCMS演示站', '关键字', '描述', '', 'default', 'default', 'array (\n  \'tel\' => \'028-xxxxxxxx\',\n  \'phone\' => \'1xxxxxxxxxx\',\n  \'fax\' => \'我是传真号码\',\n  \'address\' => \'成都市某个区某个大道1234号\',\n  \'weibo\' => \'我是微博id或主页链接地址\',\n  \'wechat\' => \'我是微信号\',\n  \'qq\' => \'599580031\',\n  \'email\' => \'599580031@qq.com\',\n  \'icp\' => \'蜀ICP备123456789号\',\n)', 'array (\n  \'upload_maxsize\' => \'2048\',\n  \'upload_allowext\' => \'jpg|jpeg|gif|bmp|png|doc|docx|xls|xlsx|ppt|pptx|pdf|txt|rar|zip|swf\',\n  \'watermark_enable\' => \'0\',\n  \'watermark_minwidth\' => \'300\',\n  \'watermark_minheight\' => \'300\',\n  \'watermark_img\' => \'/statics/images/water/mark.png\',\n  \'watermark_pct\' => \'85\',\n  \'watermark_quality\' => \'80\',\n  \'watermark_pos\' => \'9\',\n)', '');
 
 INSERT INTO `phpcms_member_group` VALUES ('8', '游客', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0.00', '0.00', '0.00', '', '', '', '0', '0');
 INSERT INTO `phpcms_member_group` VALUES ('2', '新手上路', '1', '1', '50', '100', '1', '1', '0', '0', '0', '1', '0', '0', '50.00', '10.00', '1.00', '', '', '', '2', '0');

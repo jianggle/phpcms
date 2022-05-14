@@ -30,7 +30,7 @@ label{line-height:30px;float:left;vertical-align:text-bottom;padding:0 5px 0 5px
 .login dl{height:50px;clear:both}
 .login dd{width:300px;float:left;margin-bottom:20px}
 .login dd.password,.login dd.submit,.login dd.username{overflow:hidden;width:300px}
-.login dd.submit img{display:inline-block;height:2.3em;width:auto}
+.login dd.submit img{display:inline-block;height:2.3em;width:auto;cursor:pointer;}
 .login label{width:100px;text-align:right;overflow:hidden;text-overflow:clip;white-space:nowrap}
 .login input[type=text],.login input[type=password]{float:left;width:200px;height:2.4em;padding:.1em 5px;line-height:2.4em}
 
