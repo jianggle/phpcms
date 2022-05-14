@@ -389,7 +389,7 @@ class attachments {
 			$file_size_limit = $site_setting['upload_maxsize'];
 			$thumb_width = intval($_args[3]);
 			$thumb_height = intval($_args[4]);
-			$watermark_enable = $_args[5] == '' ? 1 : intval($_args[5]);
+			$watermark_enable = $_args[5] == '' ? 0 : intval($_args[5]);
 			$allowupload = intval($_args[2]);
 			$admin_url = pc_base::load_config('system', 'admin_url');
 			$upload_path = empty($admin_url) ? APP_PATH : SITE_PROTOCOL.$admin_url.'/';
