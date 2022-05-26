@@ -2,12 +2,12 @@
 <p class="info">
 {pc:content action="category" catid="1" num="15" siteid="$siteid" order="listorder ASC"}
 {loop $data $r}
-<a href="{$r[url]}" target="_blank">{$r[catname]}</a> |  
+<a href="{$r[url]}" target="_blank">{$r[catname]}</a> |
 {/loop}
 {/pc}
 <a href="{APP_PATH}index.php?m=link" target="_blank">友情链接</a>
 <br />
-Powered by <strong><a href="http://www.phpcms.cn" target="_blank">PHPCMS</a></strong> <em>{get_pc_version(1)}</em> &copy; 2017 <img src="{IMG_PATH}copyright.gif"/>{tjcode()}{php echo runhook('glogal_footer')}
+Powered by <strong><a href="http://www.phpcms.cn" target="_blank">PHPCMS</a></strong> <em>{get_pc_version(1)}</em> &copy; 2017 <img src="{IMG_PATH}copyright.gif"/>{tjcode()}
 </p>
 </div>
 <script type="text/javascript">

@@ -84,10 +84,10 @@ var pc_hash = '<?php echo $_SESSION['pc_hash']?>'
         foreach($array as $_value) {
         	if($_value['id']==4) {
         		echo '<li id="_M'.$_value['id'].'" class="on top_menu"><a href="javascript:_M('.$_value['id'].',\'?m='.$_value['m'].'&c='.$_value['c'].'&a='.$_value['a'].'\')" hidefocus="true" style="outline:none;">'.L($_value['name']).'</a></li>';
-        		
+
         	} else {
         		echo '<li id="_M'.$_value['id'].'" class="top_menu"><a href="javascript:_M('.$_value['id'].',\'?m='.$_value['m'].'&c='.$_value['c'].'&a='.$_value['a'].'\')"  hidefocus="true" style="outline:none;">'.L($_value['name']).'</a></li>';
-        	}      	
+        	}
         }
         ?>
             <li class="tab_web"><a href="javascript:;"><span><?php echo $currentsite['name']?></span></a></li>
@@ -106,7 +106,7 @@ var pc_hash = '<?php echo $_SESSION['pc_hash']?>'
         </div>
     <div class="col-auto mr8">
     <div class="crumbs">
-    <div class="shortcut cu-span"><a href="?m=content&c=create_html&a=public_index&pc_hash=<?php echo $_SESSION['pc_hash'];?>" target="right"><span><?php echo L('create_index')?></span></a><a href="?m=admin&c=cache_all&a=init&pc_hash=<?php echo $_SESSION['pc_hash'];?>" target="right"><span><?php echo L('update_backup')?></span></a><a href="javascript:art.dialog({id:'map',iframe:'?m=admin&c=index&a=public_map', title:'<?php echo L('background_map')?>', width:'700', height:'500', lock:true});void(0);"><span><?php echo L('background_map')?></span></a><?php echo runhook('admin_top_left_menu')?></div>
+    <div class="shortcut cu-span"><a href="?m=content&c=create_html&a=public_index&pc_hash=<?php echo $_SESSION['pc_hash'];?>" target="right"><span><?php echo L('create_index')?></span></a><a href="?m=admin&c=cache_all&a=init&pc_hash=<?php echo $_SESSION['pc_hash'];?>" target="right"><span><?php echo L('update_backup')?></span></a><a href="javascript:art.dialog({id:'map',iframe:'?m=admin&c=index&a=public_map', title:'<?php echo L('background_map')?>', width:'700', height:'500', lock:true});void(0);"><span><?php echo L('background_map')?></span></a></div>
     <?php echo L('current_position')?><span id="current_pos"></span></div>
     	<div class="col-1">
         	<div class="content" style="position:relative; overflow:hidden">
@@ -135,7 +135,7 @@ var pc_hash = '<?php echo $_SESSION['pc_hash']?>'
 </ul>
 </div>
 <div class="scroll"><a href="javascript:;" class="per" title="使用鼠标滚轴滚动侧栏" onclick="menuScroll(1);"></a><a href="javascript:;" class="next" title="使用鼠标滚轴滚动侧栏" onclick="menuScroll(2);"></a></div>
-<script type="text/javascript"> 
+<script type="text/javascript">
 if(!Array.prototype.map)
 Array.prototype.map = function(fn,scope) {
   var result = [],ri = 0;
@@ -156,7 +156,7 @@ return ["Height","Width"].map(function(name){
 window.onload = function (){
 	if(!+"\v1" && !document.querySelector) { // for IE6 IE7
 	  document.body.onresize = resize;
-	} else { 
+	} else {
 	  window.onresize = resize;
 	}
 	function resize() {
@@ -169,7 +169,7 @@ function wSize(){
 	var str=getWindowSize();
 	var strs= new Array(); //定义一数组
 	strs=str.toString().split(","); //字符分割
-	var heights = strs[0]-150,Body = $('body');$('#rightMain').height(heights);   
+	var heights = strs[0]-150,Body = $('body');$('#rightMain').height(heights);
 	//iframe.height = strs[0]-46;
 	if(strs[1]<980){
 		$('.header').css('width',980+'px');
@@ -182,10 +182,10 @@ function wSize(){
 		Body.attr('scroll','no');
 		Body.addClass('objbody');
 	}
-	
+
 	var openClose = $("#rightMain").height()+39;
 	$('#center_frame').height(openClose+9);
-	$("#openClose").height(openClose+30);	
+	$("#openClose").height(openClose+30);
 	$("#Scroll").height(openClose-20);
 	windowW();
 }
@@ -381,7 +381,7 @@ $(document).bind('keydown', 'return', function(evt){check_screenlock();return fa
     Scroll = document.getElementById('Scroll');
     // IE6/IE7/IE8/IE10/IE11/Opera 10+/Safari5+
     addEvent(Scroll, 'mousewheel', function(event){
-        event = window.event || event ;  
+        event = window.event || event ;
 		if(event.wheelDelta <= 0 || event.detail > 0) {
 				Scroll.scrollTop = Scroll.scrollTop + 29;
 			} else {
@@ -398,7 +398,7 @@ $(document).bind('keydown', 'return', function(evt){check_screenlock();return fa
 				Scroll.scrollTop = Scroll.scrollTop - 29;
 		}
     }, false);
-	
+
 })();
 function menuScroll(num){
 	var Scroll = document.getElementById('Scroll');
@@ -424,7 +424,7 @@ function _Site_M(project) {
 	if (!project){
 		project = 0;
 	}
-	$.ajaxSettings.async = false; 
+	$.ajaxSettings.async = false;
 	$.getJSON('index.php', {m:'admin', c:'index', a:'public_set_model', 'site_model':project, 'time':Math.random()}, function (data){
 		$.each(data, function(i, n){
 			$('#_M'+n).show();

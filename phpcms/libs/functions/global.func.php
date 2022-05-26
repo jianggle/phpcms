@@ -83,28 +83,28 @@ function safe_replace($string) {
  * @param $string
  * @return string
  */
-function remove_xss($string) { 
+function remove_xss($string) {
     $string = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/S', '', $string);
 
     $parm1 = Array('javascript', 'vbscript', 'expression', 'applet', 'meta', 'xml', 'blink', 'link', 'script', 'embed', 'object', 'iframe', 'frame', 'frameset', 'ilayer', 'layer', 'bgsound', 'title', 'base');
 
     $parm2 = Array('onabort', 'onactivate', 'onafterprint', 'onafterupdate', 'onbeforeactivate', 'onbeforecopy', 'onbeforecut', 'onbeforedeactivate', 'onbeforeeditfocus', 'onbeforepaste', 'onbeforeprint', 'onbeforeunload', 'onbeforeupdate', 'onblur', 'onbounce', 'oncellchange', 'onchange', 'onclick', 'oncontextmenu', 'oncontrolselect', 'oncopy', 'oncut', 'ondataavailable', 'ondatasetchanged', 'ondatasetcomplete', 'ondblclick', 'ondeactivate', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onerror', 'onerrorupdate', 'onfilterchange', 'onfinish', 'onfocus', 'onfocusin', 'onfocusout', 'onhelp', 'onkeydown', 'onkeypress', 'onkeyup', 'onlayoutcomplete', 'onload', 'onlosecapture', 'onmousedown', 'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onmove', 'onmoveend', 'onmovestart', 'onpaste', 'onpropertychange', 'onreadystatechange', 'onreset', 'onresize', 'onresizeend', 'onresizestart', 'onrowenter', 'onrowexit', 'onrowsdelete', 'onrowsinserted', 'onscroll', 'onselect', 'onselectionchange', 'onselectstart', 'onstart', 'onstop', 'onsubmit', 'onunload');
 
-    $parm = array_merge($parm1, $parm2); 
+    $parm = array_merge($parm1, $parm2);
 
-	for ($i = 0; $i < sizeof($parm); $i++) { 
-		$pattern = '/'; 
-		for ($j = 0; $j < strlen($parm[$i]); $j++) { 
-			if ($j > 0) { 
-				$pattern .= '('; 
-				$pattern .= '(&#[x|X]0([9][a][b]);?)?'; 
-				$pattern .= '|(&#0([9][10][13]);?)?'; 
-				$pattern .= ')?'; 
+	for ($i = 0; $i < sizeof($parm); $i++) {
+		$pattern = '/';
+		for ($j = 0; $j < strlen($parm[$i]); $j++) {
+			if ($j > 0) {
+				$pattern .= '(';
+				$pattern .= '(&#[x|X]0([9][a][b]);?)?';
+				$pattern .= '|(&#0([9][10][13]);?)?';
+				$pattern .= ')?';
 			}
-			$pattern .= $parm[$i][$j]; 
+			$pattern .= $parm[$i][$j];
 		}
 		$pattern .= '/i';
-		$string = preg_replace($pattern, ' ', $string); 
+		$string = preg_replace($pattern, ' ', $string);
 	}
 	return $string;
 }
@@ -309,7 +309,7 @@ function string2array($data) {
 */
 function array2string($data, $isformdata = 1) {
 	if($data == '' || empty($data)) return '';
-	
+
 	if($isformdata) $data = new_stripslashes($data);
 	if(strtolower(CHARSET)=='gbk'){
 		$data = mult_iconv("GBK", "UTF-8", $data);
@@ -479,11 +479,6 @@ function L($language = 'no_language',$pars = array(), $modules = '') {
  * @return unknown_type
  */
 function template($module = 'content', $template = 'index', $style = '') {
-
-	if(strpos($module, 'plugin/')!== false) {
-		$plugin = str_replace('plugin/', '', $module);
-		return p_template($plugin, $template,$style);
-	}
 	$module = str_replace('/', DIRECTORY_SEPARATOR, $module);
 	if(!empty($style) && preg_match('/([a-z0-9\-_]+)/is',$style)) {
 	} elseif (empty($style) && !defined('STYLE')) {
@@ -1027,7 +1022,7 @@ function menu_linkage($linkageid = 0, $id = 'linkid', $defaultvalue = 0) {
 		$string .=$s;
 		$string .= ')';
 		$string .= '</script>';
-		
+
 	} elseif($datas['style']=='2') {
 		if(!defined('LINKAGE_INIT_1')) {
 			define('LINKAGE_INIT_1', 1);
@@ -1046,8 +1041,8 @@ function menu_linkage($linkageid = 0, $id = 'linkid', $defaultvalue = 0) {
 
 		$string .= '<script type="text/javascript">
 					$(function(){
-						var $ld5 = $(".pc-select-'.$id.'");					  
-						$ld5.ld({ajaxOptions : {"url" : "'.APP_PATH.'api.php?op=get_linkage&act=ajax_select&keyid='.$linkageid.'"},defaultParentId : 0,style : {"width" : 120}})	 
+						var $ld5 = $(".pc-select-'.$id.'");
+						$ld5.ld({ajaxOptions : {"url" : "'.APP_PATH.'api.php?op=get_linkage&act=ajax_select&keyid='.$linkageid.'"},defaultParentId : 0,style : {"width" : 120}})
 						var ld5_api = $ld5.ld("api");
 						ld5_api.selected('.$default_txt.');
 						$ld5.bind("change",onchange);
@@ -1060,7 +1055,7 @@ function menu_linkage($linkageid = 0, $id = 'linkid', $defaultvalue = 0) {
 							$ld5.eq(index).show();								}
 					})
 		</script>';
-			
+
 	} else {
 		$title = $defaultvalue ? $infos[$defaultvalue]['name'] : $datas['title'];
 		$colObj = random(3).date('is');
@@ -1629,70 +1624,12 @@ function get_pc_version($type='') {
 		return $version['pc_version'].' '.$version['pc_release'];
 	}
 }
-/**
- * 运行钩子（插件使用）
- */
-function runhook($method) {
-	$time_start = getmicrotime();
-	$data  = '';
-	$getpclass = FALSE;
-	$hook_appid = getcache('hook','plugins');
-	if(!empty($hook_appid)) {
-		foreach($hook_appid as $appid => $p) {
-			$pluginfilepath = PC_PATH.'plugin'.DIRECTORY_SEPARATOR.$p.DIRECTORY_SEPARATOR.'hook.class.php';
-			$getpclass = TRUE;
-			include_once $pluginfilepath;
-		}
-		$hook_appid = array_flip($hook_appid);
-		if($getpclass) {
-			$pclass = new ReflectionClass('hook');
-			foreach($pclass->getMethods() as $r) {
-				$legalmethods[] = $r->getName();
-			}
-		}
-		if(in_array($method,$legalmethods)) {
-			foreach (get_declared_classes() as $class){
-			   $refclass = new ReflectionClass($class);
-			   if($refclass->isSubclassOf('hook')){
-				  if ($_method = $refclass->getMethod($method)) {
-						  $classname = $refclass->getName();
-						if ($_method->isPublic() && $_method->isFinal()) {
-							plugin_stat($hook_appid[$classname]);
-							$data .= $_method->invoke(null);
-						}
-					}
-			   }
-			}
-		}
-		return $data;
-	}
-}
 
 function getmicrotime() {
 	list($usec, $sec) = explode(" ",microtime());
 	return ((float)$usec + (float)$sec);
 }
 
-/**
- * 插件前台模板加载
- * Enter description here ...
- * @param unknown_type $module
- * @param unknown_type $template
- * @param unknown_type $style
- */
-function p_template($plugin = 'content', $template = 'index',$style='default') {
-	if(!$style) $style = 'default';
-	$template_cache = pc_base::load_sys_class('template_cache');
-	$compiledtplfile = PHPCMS_PATH.'caches'.DIRECTORY_SEPARATOR.'caches_template'.DIRECTORY_SEPARATOR.$style.DIRECTORY_SEPARATOR.'plugin'.DIRECTORY_SEPARATOR.$plugin.DIRECTORY_SEPARATOR.$template.'.php';
-
-	if(!file_exists($compiledtplfile) || (file_exists(PC_PATH.'plugin'.DIRECTORY_SEPARATOR.$plugin.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template.'.html') && filemtime(PC_PATH.'plugin'.DIRECTORY_SEPARATOR.$plugin.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template.'.html') > filemtime($compiledtplfile))) {
-		$template_cache->template_compile('plugin/'.$plugin, $template, 'default');
-	} elseif (!file_exists(PC_PATH.'plugin'.DIRECTORY_SEPARATOR.$plugin.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template.'.html')) {
-		showmessage('Template does not exist.'.DIRECTORY_SEPARATOR.'plugin'.DIRECTORY_SEPARATOR.$plugin.DIRECTORY_SEPARATOR.$template.'.html');
-	}
-
-	return $compiledtplfile;
-}
 /**
  * 读取缓存动态页面
  */
@@ -1747,5 +1684,5 @@ function pc_file_get_contents($url, $timeout=30) {
 		return $minite.":".$secend;
 	}
 
- } 
+ }
 ?>

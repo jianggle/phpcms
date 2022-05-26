@@ -363,10 +363,6 @@ $LANG['add_tag'] = 'Add tag wizard';
 $LANG['edit_tag'] = 'Edit tag wizard';
 $LANG['delete_tag'] = 'Delete tag wizard';
 $LANG['tag_lists'] = 'A list of tag wizard';
-$LANG['plugin'] = 'Plugins';
-$LANG['upgrade'] = 'Upgrade';
 $LANG['comment_manage'] = 'Manage comment';
 $LANG['sync_release_point'] = 'Sync to publishing point'
-
-
 ?>
